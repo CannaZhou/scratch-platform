@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scratch 编程练习平台 · 第1课</title>
+<style>
+:root {
+  --primary: #ff8c42;
+  --primary-light: #ffa85c;
+  --primary-dark: #e6742e;
+  --primary-bg: #fff5ec;
+  --secondary: #4f7cac;
+  --bg-grad: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+  --text: #2c3e50;
+  --text-light: #5a6b7d;
+  --border: #ecf1f6;
+  --success: #4caf50;
+  --success-bg: #e8f5e9;
+  --danger: #ef5350;
+  --danger-bg: #ffebee;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  background: var(--bg-grad);
+  color: var(--text);
+  min-height: 100vh;
+  padding: 16px;
+  line-height: 1.7;
+}
+
+/* === 登录界面 === */
+.login-container {
+  max-width: 420px;
+  margin: 80px auto;
+  background: #fff;
+  border-radius: 16px;
+  padding: 40px 32px;
+  box-shadow: 0 12px 36px rgba(0,0,0,0.08);
+}
+.login-logo {
+  width: 80px; height: 80px;
+  margin: 0 auto 16px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 36px; color: #fff;
+  box-shadow: 0 6px 18px rgba(255,140,66,0.3);
+}
+.login-container h1 { text-align: center; font-size: 22px; margin-bottom: 8px; }
+.login-container .subtitle { text-align: center; color: var(--text-light); font-size: 14px; margin-bottom: 28px; }
+.form-group { margin-bottom: 18px; }
+.form-group label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+.form-group input {
+  width: 100%; padding: 12px 14px;
+  border: 1.5px solid #e3e9f0;
+  border-radius: 8px; font-size: 15px;
+  transition: border-color 0.2s; outline: none;
+}
+.form-group input:focus { border-color: var(--primary); }
+.login-btn {
+  width: 100%;
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  color: #fff; border: none; padding: 13px;
+  border-radius: 8px; font-size: 16px; font-weight: 500;
+  cursor: pointer; transition: transform 0.15s;
+}
+.login-btn:hover { transform: translateY(-1px); }
+.login-hint {
+  margin-top: 18px; padding: 12px;
+  background: var(--primary-bg);
+  border-radius: 8px; font-size: 12px;
+  color: var(--text-light); line-height: 1.6;
+}
+.login-hint strong { color: var(--primary-dark); }
+.login-error {
+  background: var(--danger-bg); color: #c62828;
+  padding: 10px 14px; border-radius: 8px;
+  font-size: 14px; margin-bottom: 16px;
+  display: none;
+}
+.login-error.show { display: block; }
+
+/* === 主应用 === */
+.app-container { max-width: 960px; margin: 0 auto; }
+.app-header {
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  color: #fff;
+  border-radius: 14px;
+  padding: 20px 28px;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 6px 18px rgba(255,140,66,0.18);
+  gap: 12px;
+}
+.app-header h1 { font-size: 20px; }
+.app-header .header-info { display: flex; align-items: center; gap: 12px; font-size: 14px; flex-wrap: wrap; }
+.user-badge {
+  background: rgba(255,255,255,0.22);
+  padding: 6px 14px;
+  border-radius: 999px;
+  display: flex; align-items: center; gap: 6px;
+}
+.logout-btn {
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #fff; padding: 6px 14px;
+  border-radius: 999px;
+  cursor: pointer; font-size: 13px;
+  transition: background 0.15s;
+}
+.logout-btn:hover { background: rgba(255,255,255,0.3); }
+
+/* === 标签页 === */
+.tabs {
+  background: #fff;
+  border-radius: 12px;
+  padding: 6px;
+  margin-bottom: 16px;
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.tab-btn {
+  flex: 1; min-width: 90px;
+  background: transparent; border: none;
+  padding: 10px 12px; border-radius: 8px;
+  cursor: pointer; font-size: 13px;
+  color: var(--text-light);
+  transition: all 0.15s;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.tab-btn:hover { background: var(--primary-bg); color: var(--primary-dark); }
+.tab-btn.active {
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  color: #fff;
+}
+
+/* === 主内容 === */
+#main-content { animation: fadeIn 0.3s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+.page-section { display: none; }
+.page-section.active { display: block; }
+
+/* 概览卡片 */
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 14px;
+  margin-bottom: 18px;
+}
+.overview-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 18px 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.overview-card .label { font-size: 13px; color: var(--text-light); margin-bottom: 6px; }
+.overview-card .value { font-size: 28px; font-weight: 700; color: var(--primary); }
+.overview-card .sub { font-size: 12px; color: var(--text-light); margin-top: 4px; }
+
+/* 题目卡片 */
+.question-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 22px 26px;
+  margin-bottom: 14px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  border: 1.5px solid var(--border);
+  transition: border-color 0.2s;
+}
+.question-card.correct { border-color: var(--success); }
+.question-card.wrong { border-color: var(--danger); }
+.q-title { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+.q-num {
+  flex: 0 0 32px; height: 32px;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 600; font-size: 14px;
+}
+.q-num.done { background: #90a4ae; }
+.q-text { flex: 1; font-size: 16px; font-weight: 600; line-height: 1.6; }
+.q-tag {
+  display: inline-block;
+  background: var(--primary-bg);
+  color: var(--primary-dark);
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  margin-left: 6px;
+  font-weight: normal;
+  vertical-align: middle;
+}
+.q-type {
+  display: inline-block;
+  background: #e3edf7;
+  color: var(--secondary);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  margin-left: 4px;
+  font-weight: normal;
+  vertical-align: middle;
+}
+.options { display: flex; flex-direction: column; gap: 8px; }
+.option {
+  background: #f7f9fc;
+  border: 1.5px solid #e3e9f0;
+  border-radius: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: all 0.15s;
+  display: flex; align-items: center;
+  gap: 10px; font-size: 14px;
+  user-select: none;
+}
+.option:hover:not(.disabled) { background: var(--primary-bg); border-color: var(--primary-light); }
+.option.selected { background: var(--primary-bg); border-color: var(--primary); }
+.option.disabled { cursor: not-allowed; opacity: 0.7; }
+.option.correct-answer { background: var(--success-bg); border-color: var(--success); color: #2e7d32; }
+.option.wrong-pick { background: var(--danger-bg); border-color: var(--danger); color: #c62828; }
+.opt-letter {
+  flex: 0 0 26px; height: 26px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1.5px solid #c4cfdb;
+  color: var(--text-light);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 600; font-size: 13px;
+}
+.option.selected .opt-letter { background: var(--primary); color: #fff; border-color: var(--primary); }
+.option.correct-answer .opt-letter { background: var(--success); color: #fff; border-color: var(--success); }
+.option.wrong-pick .opt-letter { background: var(--danger); color: #fff; border-color: var(--danger); }
+.opt-text { flex: 1; }
+.opt-icon { flex: 0 0 20px; font-size: 16px; display: none; }
+.option.correct-answer .opt-icon, .option.wrong-pick .opt-icon { display: inline; }
+
+.feedback {
+  margin-top: 12px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  display: none;
+  line-height: 1.6;
+}
+.feedback.show { display: block; }
+.feedback.correct { background: var(--success-bg); color: #2e7d32; border-left: 3px solid var(--success); }
+.feedback.wrong { background: var(--danger-bg); color: #c62828; border-left: 3px solid var(--danger); }
+.feedback strong { display: block; margin-bottom: 4px; }
+
+.actions {
+  display: flex; gap: 12px; justify-content: center;
+  margin-top: 20px; flex-wrap: wrap;
+}
+.btn {
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  color: #fff; border: none;
+  padding: 11px 24px;
+  border-radius: 8px; font-size: 14px;
+  font-weight: 500; cursor: pointer;
+  transition: all 0.15s;
+}
+.btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(255,140,66,0.3); }
+.btn:disabled { background: #c4cfdb; cursor: not-allowed; transform: none; box-shadow: none; }
+.btn.secondary {
+  background: #fff; color: var(--primary-dark);
+  border: 1.5px solid var(--primary);
+}
+.btn.secondary:hover { background: var(--primary-bg); }
+
+/* 进度条 */
+.progress-bar {
+  background: #fff;
+  border-radius: 12px;
+  padding: 14px 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.progress-info { display: flex; justify-content: space-between; font-size: 13px; color: var(--text-light); margin-bottom: 8px; }
+.progress-track { width: 100%; height: 8px; background: #e9eef4; border-radius: 4px; overflow: hidden; }
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--primary-light));
+  width: 0%; transition: width 0.4s ease;
+}
+
+/* 成绩卡 */
+.result-card {
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  color: #fff;
+  border-radius: 14px;
+  padding: 24px;
+  text-align: center;
+  margin-top: 20px;
+  box-shadow: 0 6px 18px rgba(255,140,66,0.2);
+  display: none;
+}
+.result-card.show { display: block; animation: fadeIn 0.4s ease; }
+.score-num { font-size: 44px; font-weight: 700; margin: 10px 0; }
+.score-text { font-size: 16px; opacity: 0.95; margin-bottom: 12px; }
+.encourage {
+  background: rgba(255,255,255,0.18);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+/* 错题本 */
+.wrong-list {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.wrong-item {
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f4f9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  gap: 12px;
+}
+.wrong-item:last-child { border-bottom: none; }
+.wrong-item .q-id {
+  background: var(--primary-bg);
+  color: var(--primary-dark);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  margin-right: 8px;
+  font-weight: 600;
+}
+.wrong-item .q-text-preview { flex: 1; color: var(--text); }
+
+/* 统计 */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+  margin-bottom: 18px;
+}
+.stat-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 18px 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.stat-card .label { font-size: 13px; color: var(--text-light); margin-bottom: 6px; }
+.stat-card .value { font-size: 26px; font-weight: 700; }
+.stat-card .sub { font-size: 12px; color: var(--text-light); margin-top: 4px; }
+
+/* 主题色 */
+.theme-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 12px;
+}
+.theme-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 18px 14px;
+  cursor: pointer;
+  border: 2px solid var(--border);
+  text-align: center;
+  transition: all 0.15s;
+}
+.theme-card:hover { transform: translateY(-2px); }
+.theme-card.active {
+  border-color: var(--primary);
+  box-shadow: 0 4px 12px rgba(255,140,66,0.2);
+}
+.theme-swatch {
+  width: 50px; height: 50px;
+  border-radius: 50%;
+  margin: 0 auto 8px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+}
+.theme-name { font-size: 13px; color: var(--text); font-weight: 500; }
+
+/* 设置页 */
+.settings-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  margin-bottom: 16px;
+}
+.settings-card h3 { font-size: 16px; margin-bottom: 12px; color: var(--text); }
+.student-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 8px;
+  margin-top: 12px;
+}
+.student-chip {
+  background: var(--primary-bg);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--text);
+}
+
+.empty-state { text-align: center; padding: 60px 20px; color: var(--text-light); }
+.empty-state .emoji { font-size: 56px; margin-bottom: 12px; }
+.empty-state .tip { font-size: 14px; margin-top: 6px; }
+
+footer {
+  text-align: center; color: #8898a8;
+  font-size: 12px; margin-top: 32px;
+}
+
+@media (max-width: 600px) {
+  .app-header { flex-direction: column; gap: 12px; align-items: flex-start; }
+  .app-header .header-info { width: 100%; justify-content: space-between; }
+  .question-card { padding: 18px 20px; }
+  .q-text { font-size: 15px; }
+}
+</style>
+</head>
+<body>
+
+<!-- 登录界面 -->
+<div id="login-page" class="login-container">
+  <div class="login-logo">🎨</div>
+  <h1>Scratch 编程练习平台</h1>
+  <div class="subtitle">第1课 初识编程 · 学生登录</div>
+  <div class="login-error" id="login-error"></div>
+  <div class="form-group">
+    <label>用户名</label>
+    <input type="text" id="username" placeholder="请输入姓名" autocomplete="username">
+  </div>
+  <div class="form-group">
+    <label>密码</label>
+    <input type="password" id="password" placeholder="请输入密码" autocomplete="current-password">
+  </div>
+  <button class="login-btn" id="login-btn">登 录</button>
+  <div class="login-hint">
+    💡 <strong>账号说明</strong><br>
+    请输入姓名,初始密码统一为 <strong>123456</strong><br>
+    学员名单可在登录后的「设置」页查看
+  </div>
+</div>
+
+<!-- 主应用 -->
+<div id="app" class="app-container" style="display:none">
+  <header class="app-header">
+    <h1>🎨 Scratch 编程练习</h1>
+    <div class="header-info">
+      <span class="user-badge">👤 <span id="current-user-name"></span></span>
+      <button class="logout-btn" id="logout-btn">退出</button>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab-btn active" data-tab="home">📊 学习概览</button>
+    <button class="tab-btn" data-tab="single">📝 单选题</button>
+    <button class="tab-btn" data-tab="multiple">☑️ 多选题</button>
+    <button class="tab-btn" data-tab="wrong">📒 错题本</button>
+    <button class="tab-btn" data-tab="stats">📈 答题统计</button>
+    <button class="tab-btn" data-tab="settings">⚙️ 设置</button>
+  </nav>
+
+  <main id="main-content">
+    <!-- 概览 -->
+    <section class="page-section active" id="section-home">
+      <div class="overview-grid" id="overview-grid"></div>
+      <div class="wrong-list">
+        <h3 style="margin-bottom:10px">📌 最近错题预览</h3>
+        <div id="recent-wrong-list"></div>
+      </div>
+    </section>
+
+    <!-- 单选题 -->
+    <section class="page-section" id="section-single">
+      <div class="progress-bar" id="single-progress"></div>
+      <div id="single-quiz"></div>
+      <div class="actions">
+        <button class="btn" id="single-submit" disabled>提交答案</button>
+        <button class="btn secondary" id="single-reset">重新练习</button>
+      </div>
+      <div class="result-card" id="single-result"></div>
+    </section>
+
+    <!-- 多选题 -->
+    <section class="page-section" id="section-multiple">
+      <div class="progress-bar" id="multiple-progress"></div>
+      <div id="multiple-quiz"></div>
+      <div class="actions">
+        <button class="btn" id="multiple-submit" disabled>提交答案</button>
+        <button class="btn secondary" id="multiple-reset">重新练习</button>
+      </div>
+      <div class="result-card" id="multiple-result"></div>
+    </section>
+
+    <!-- 错题本 -->
+    <section class="page-section" id="section-wrong">
+      <div id="wrong-content"></div>
+    </section>
+
+    <!-- 统计 -->
+    <section class="page-section" id="section-stats">
+      <div class="stats-grid" id="stats-grid"></div>
+      <div class="wrong-list">
+        <h3 style="margin-bottom:10px">📋 错题明细</h3>
+        <div id="wrong-detail"></div>
+      </div>
+    </section>
+
+    <!-- 设置 -->
+    <section class="page-section" id="section-settings">
+      <div class="settings-card">
+        <h3>🎨 主题色设置</h3>
+        <div class="theme-grid" id="theme-grid"></div>
+        <div style="margin-top:14px;font-size:13px;color:var(--text-light)">
+          选择喜欢的主题色,所有界面元素(按钮、卡片、进度条、登录页等)会统一应用该颜色。
+        </div>
+      </div>
+      <div class="settings-card">
+        <h3>👥 班级学生名单</h3>
+        <div class="student-list" id="student-list"></div>
+      </div>
+      <div class="settings-card">
+        <h3>🔑 账号密码</h3>
+        <div style="font-size:13px;color:var(--text-light);line-height:1.7">
+          初始密码统一为 <strong>123456</strong>,用户名就是学生的中文姓名。
+        </div>
+      </div>
+      <div class="settings-card">
+        <h3 style="color:var(--danger)">⚠️ 数据管理</h3>
+        <button class="btn secondary" id="clear-data-btn" style="margin:0">🗑 清除我的所有答题记录</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>老师寄语:编程是一个边玩边学的过程,做完题记得在 Scratch 里动手试试哦!🚀</footer>
+</div>
+
+<script>
+// =================== 数据定义 ===================
+const QUESTIONS = {
+  single: [
+    {
+      id: 's1',
+      text: 'Scratch 是一款怎样的软件?',
+      tag: '概念理解',
+      options: [
+        { letter: 'A', text: '一款主要用于打字练习的工具' },
+        { letter: 'B', text: '一款面向青少年的图形化编程工具,通过拖拽积木块来编写程序' },
+        { letter: 'C', text: '一款必须输入英文代码才能使用的专业软件' },
+        { letter: 'D', text: '一款只能在手机上运行的应用程序' }
+      ],
+      answer: 'B',
+      explain: 'Scratch 是由 MIT 媒体实验室开发的图形化编程工具,通过"搭积木"的方式编写程序,特别适合青少年入门编程。'
+    },
+    {
+      id: 's2',
+      text: '在 Scratch 中,要运行一个脚本(程序),通常需要点击哪个按钮?',
+      tag: '界面操作',
+      options: [
+        { letter: 'A', text: '红色圆形按钮(停止)' },
+        { letter: 'B', text: '绿色旗帜按钮(开始)' },
+        { letter: 'C', text: '蓝色箭头按钮' },
+        { letter: 'D', text: '黄色星形按钮' }
+      ],
+      answer: 'B',
+      explain: 'Scratch 舞台上的绿色旗帜是"开始运行"的标志,红色圆形是"停止运行"。常见的"当绿旗被点击"积木,就是用来响应绿旗点击事件的。'
+    },
+    {
+      id: 's3',
+      text: 'Scratch 默认的小猫角色,初始位置位于舞台中央。此时角色在坐标系中的坐标是?',
+      tag: '坐标方向',
+      options: [
+        { letter: 'A', text: '(0, 0)' },
+        { letter: 'B', text: '(100, 100)' },
+        { letter: 'C', text: '(240, 180)' },
+        { letter: 'D', text: '(-240, -180)' }
+      ],
+      answer: 'A',
+      explain: 'Scratch 舞台中央是坐标原点 (0, 0);x 表示水平方向,y 表示垂直方向,屏幕向右、向上为正方向。'
+    },
+    {
+      id: 's4',
+      text: 'Scratch 中"面向 90 方向"指的是角色面向哪个方向?',
+      tag: '坐标方向',
+      options: [
+        { letter: 'A', text: '向上' },
+        { letter: 'B', text: '向下' },
+        { letter: 'C', text: '向右' },
+        { letter: 'D', text: '向左' }
+      ],
+      answer: 'C',
+      explain: 'Scratch 默认的方向体系中:0° 向上、90° 向右、180°(或 -180°)向下、-90° 向左。这与数学中的角度方向略有不同,要注意区分。'
+    },
+    {
+      id: 's5',
+      text: '下列关于 Scratch 界面区域的描述,哪个是<b>正确</b>的?',
+      tag: '界面操作',
+      options: [
+        { letter: 'A', text: '"舞台区"在屏幕最左边,展示程序运行效果' },
+        { letter: 'B', text: '"积木区"显示了所有可用的程序积木,按类别(运动、外观、声音等)分组' },
+        { letter: 'C', text: '"角色区"用来编写代码逻辑,不支持修改角色属性' },
+        { letter: 'D', text: '"代码区"位于屏幕底部,用于选择背景' }
+      ],
+      answer: 'B',
+      explain: 'Scratch 界面主要分为:舞台区(展示运行效果)、角色区(管理角色与背景)、积木区(按颜色分类的所有积木)和代码区(拼接积木形成脚本)。'
+    }
+  ],
+  multiple: [
+    {
+      id: 'm1',
+      text: '下列哪些是 Scratch 的特点?(多选)',
+      tag: '概念理解',
+      options: [
+        { letter: 'A', text: '图形化编程,通过拖拽积木块来编写程序' },
+        { letter: 'B', text: '由麻省理工学院(MIT)开发' },
+        { letter: 'C', text: '是一款付费软件,需要购买才能使用' },
+        { letter: 'D', text: '支持中文和英文等多种语言界面' }
+      ],
+      answer: ['A', 'B', 'D'],
+      explain: 'Scratch 是 MIT 开发的免费图形化编程工具,支持多语言界面,通过搭积木的方式编程。选项 C 错误,Scratch 完全免费。'
+    },
+    {
+      id: 'm2',
+      text: '下列哪些属于 Scratch 界面的主要区域?(多选)',
+      tag: '界面操作',
+      options: [
+        { letter: 'A', text: '舞台区(展示程序运行效果)' },
+        { letter: 'B', text: '角色区(管理角色与背景)' },
+        { letter: 'C', text: '积木区(分类显示所有可用的积木)' },
+        { letter: 'D', text: '代码区(拖放积木,拼接成脚本)' }
+      ],
+      answer: ['A', 'B', 'C', 'D'],
+      explain: 'Scratch 界面主要包含舞台区、角色区、积木区和代码区四大区域,各司其职,缺一不可。'
+    },
+    {
+      id: 'm3',
+      text: '关于 Scratch 的方向系统,下列说法正确的有?(多选)',
+      tag: '坐标方向',
+      options: [
+        { letter: 'A', text: '0 度方向指向正上方' },
+        { letter: 'B', text: '90 度方向指向正右方' },
+        { letter: 'C', text: '-90 度方向指向正下方' },
+        { letter: 'D', text: '180 度方向指向正下方' }
+      ],
+      answer: ['A', 'B', 'D'],
+      explain: 'Scratch 方向体系:0° 上、90° 右、180°(或 -180°)下、-90° 左。-90° 是向左,不是向下,所以 C 错误。'
+    },
+    {
+      id: 'm4',
+      text: '关于 Scratch 舞台的坐标系,下列说法正确的有?(多选)',
+      tag: '坐标方向',
+      options: [
+        { letter: 'A', text: '舞台中央是坐标原点 (0, 0)' },
+        { letter: 'B', text: '向右移动时,角色 x 坐标会增加' },
+        { letter: 'C', text: '向上移动时,角色 y 坐标会增加' },
+        { letter: 'D', text: '舞台 x 坐标最大值是 480' }
+      ],
+      answer: ['A', 'B', 'C'],
+      explain: 'Scratch 默认舞台宽度 480,范围 -240 到 240,所以 x 最大值是 240 而不是 480,D 错误。'
+    },
+    {
+      id: 'm5',
+      text: '下列哪些积木可以作为脚本的"触发器",让脚本开始执行?(多选)',
+      tag: '界面操作',
+      options: [
+        { letter: 'A', text: '当绿旗被点击' },
+        { letter: 'B', text: '当角色被点击' },
+        { letter: 'C', text: '当按下空格键' },
+        { letter: 'D', text: '移动 10 步' }
+      ],
+      answer: ['A', 'B', 'C'],
+      explain: '"移动 10 步"属于动作类积木,需要被其他积木调用才能执行,本身不能启动脚本。A、B、C 都是事件类积木,可以作为触发器。'
+    }
+  ]
+};
+
+const STUDENTS = [
+  { username: 'yaoqilin', password: '123456', name: '姚琪琳' },
+  { username: 'wushixuan', password: '123456', name: '吴诗炫' },
+  { username: 'shiyiyang', password: '123456', name: '石一阳' },
+  { username: 'wangyi', password: '123456', name: '王毅' },
+  { username: 'dongzishuo', password: '123456', name: '董子硕' },
+  { username: 'zhengchenxi', password: '123456', name: '郑晨曦' },
+  { username: 'zhengjixin', password: '123456', name: '郑佳欣' }
+];
+
+const THEMES = [
+  { id: 'orange', name: '温暖橙', primary: '#ff8c42', light: '#ffa85c', dark: '#e6742e', bg: '#fff5ec' },
+  { id: 'blue',   name: '科技蓝', primary: '#4f7cac', light: '#6a9ec9', dark: '#3e6592', bg: '#eef3f9' },
+  { id: 'green',  name: '清新绿', primary: '#4caf50', light: '#6ec071', dark: '#388e3c', bg: '#e8f5e9' },
+  { id: 'purple', name: '梦幻紫', primary: '#9c27b0', light: '#ba68c8', dark: '#7b1fa2', bg: '#f3e5f5' },
+  { id: 'pink',   name: '少女粉', primary: '#ec407a', light: '#f06292', dark: '#c2185b', bg: '#fce4ec' },
+  { id: 'teal',   name: '海洋青', primary: '#00838f', light: '#26a69a', dark: '#006064', bg: '#e0f7fa' }
+];
+
+// =================== 存储管理 ===================
+const STORAGE_KEY = 'scratch_quiz_data_v1';
+const SESSION_KEY = 'scratch_quiz_session_v1';
+
+function loadAllData() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
+  catch (e) { return {}; }
+}
+function saveAllData(d) { localStorage.setItem(STORAGE_KEY, JSON.stringify(d)); }
+
+function getStudentData(username) {
+  const all = loadAllData();
+  if (!all[username]) {
+    const stu = STUDENTS.find(s => s.username === username);
+    all[username] = {
+      name: stu ? stu.name : username,
+      answers: { single: {}, multiple: {} },
+      theme: 'orange'
+    };
+    saveAllData(all);
+  }
+  return all[username];
+}
+function setStudentData(username, data) {
+  const all = loadAllData();
+  all[username] = data;
+  saveAllData(all);
+}
+
+function getCurrentUser() { return sessionStorage.getItem(SESSION_KEY); }
+function setCurrentUser(u) {
+  if (u) sessionStorage.setItem(SESSION_KEY, u);
+  else sessionStorage.removeItem(SESSION_KEY);
+}
+
+// =================== 通用工具 ===================
+function isCorrect(q, userAns) {
+  if (!userAns) return false;
+  const correctArr = Array.isArray(q.answer) ? [...q.answer].sort() : [q.answer];
+  const userArr = Array.isArray(userAns) ? [...userAns].sort() : [userAns];
+  if (correctArr.length !== userArr.length) return false;
+  return correctArr.every((v, i) => v === userArr[i]);
+}
+
+function getScoreText(c, total) {
+  const pct = total === 0 ? 0 : Math.round(c / total * 100);
+  if (pct === 100) return '满分通关!🎉';
+  if (pct >= 80) return '优秀,继续保持!';
+  if (pct >= 60) return '不错,继续加油!';
+  return '不要灰心,熟能生巧!';
+}
+
+function getEncourage(c, total) {
+  if (c === total) return '基础掌握得很扎实,继续保持,期待下节课更精彩的内容!';
+  if (c >= total - 1) return '只错了一道,看看错题解析再过一遍哦~';
+  if (c >= 3) return '建议打开 Scratch 软件,亲手拖一拖相关积木,印象会更深。';
+  return '没关系,刚开始接触编程,多练几次就会熟悉啦!';
+}
+
+function findQuestion(id) {
+  for (const type of ['single', 'multiple']) {
+    const q = QUESTIONS[type].find(q => q.id === id);
+    if (q) return { q, type };
+  }
+  return null;
+}
+
+function getWrongQuestions() {
+  const username = getCurrentUser();
+  if (!username) return [];
+  const data = getStudentData(username);
+  const result = [];
+  ['single', 'multiple'].forEach(type => {
+    Object.entries(data.answers[type]).forEach(([qid, ans]) => {
+      if (!ans.correct) {
+        result.push({ id: qid, type, lastWrongTime: ans.time });
+      }
+    });
+  });
+  return result.sort((a, b) => b.lastWrongTime - a.lastWrongTime);
+}
+
+function timeAgo(ts) {
+  if (!ts) return '';
+  const diff = Date.now() - ts;
+  const min = Math.floor(diff / 60000);
+  if (min < 1) return '刚刚';
+  if (min < 60) return min + ' 分钟前';
+  const h = Math.floor(min / 60);
+  if (h < 24) return h + ' 小时前';
+  const d = Math.floor(h / 24);
+  return d + ' 天前';
+}
+
+// =================== 题目渲染 ===================
+let singleState = { answers: {}, submitted: false };
+let multipleState = { answers: {}, submitted: false };
+
+function renderQuiz(type, containerId, progressId, submitId, resultId) {
+  const quizEl = document.getElementById(containerId);
+  const progressEl = document.getElementById(progressId);
+  const submitBtn = document.getElementById(submitId);
+  const resultEl = document.getElementById(resultId);
+  const questions = QUESTIONS[type];
+  const state = type === 'single' ? singleState : multipleState;
+
+  function renderProgress() {
+    const answered = Object.keys(state.answers).length;
+    const pct = Math.round((answered / questions.length) * 100);
+    progressEl.innerHTML = `
+      <div class="progress-info">
+        <span>${type === 'single' ? '单选题' : '多选题'} · 已作答 ${answered} / ${questions.length}</span>
+        <span>${pct}%</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div>
+    `;
+    submitBtn.disabled = Object.keys(state.answers).length !== questions.length || state.submitted;
+  }
+
+  function renderQuestions() {
+    quizEl.innerHTML = '';
+    questions.forEach((q, idx) => {
+      const card = document.createElement('div');
+      card.className = 'question-card';
+      card.innerHTML = `
+        <div class="q-title">
+          <div class="q-num ${state.submitted ? 'done' : ''}">${idx + 1}</div>
+          <div class="q-text">${q.text}<span class="q-type">${type === 'single' ? '单选' : '多选'}</span><span class="q-tag">${q.tag}</span></div>
+        </div>
+        <div class="options" id="opts-${type}-${idx}"></div>
+        <div class="feedback" id="fb-${type}-${idx}"></div>
+      `;
+      quizEl.appendChild(card);
+
+      const optsEl = card.querySelector('.options');
+      const userAns = state.answers[idx];
+      const userAnsArr = Array.isArray(userAns) ? userAns : (userAns ? [userAns] : []);
+
+      q.options.forEach(opt => {
+        const div = document.createElement('div');
+        div.className = 'option';
+        div.dataset.letter = opt.letter;
+        div.innerHTML = `
+          <span class="opt-letter">${opt.letter}</span>
+          <span class="opt-text">${opt.text}</span>
+          <span class="opt-icon"></span>
+        `;
+
+        if (state.submitted) {
+          div.classList.add('disabled');
+          const correctArr = Array.isArray(q.answer) ? q.answer : [q.answer];
+          if (correctArr.includes(opt.letter)) {
+            div.classList.add('correct-answer');
+            div.querySelector('.opt-icon').textContent = '✓';
+          } else if (userAnsArr.includes(opt.letter)) {
+            div.classList.add('wrong-pick');
+            div.querySelector('.opt-icon').textContent = '✗';
+          }
+        } else {
+          if (userAnsArr.includes(opt.letter)) div.classList.add('selected');
+        }
+
+        div.addEventListener('click', () => pick(idx, opt.letter));
+        optsEl.appendChild(div);
+      });
+
+      if (state.submitted) {
+        const fb = card.querySelector('.feedback');
+        fb.classList.add('show');
+        const isRight = isCorrect(q, state.answers[idx]);
+        fb.classList.add(isRight ? 'correct' : 'wrong');
+        const correctText = Array.isArray(q.answer) ? q.answer.join('、') : q.answer;
+        fb.innerHTML = `<strong>${isRight ? '✓ 回答正确' : '✗ 回答错误,正确答案是 ' + correctText}</strong>${q.explain}`;
+        card.classList.add(isRight ? 'correct' : 'wrong');
+      }
+    });
+    renderProgress();
+  }
+
+  function pick(qIdx, letter) {
+    if (state.submitted) return;
+    if (type === 'single') {
+      state.answers[qIdx] = letter;
+    } else {
+      if (!state.answers[qIdx]) state.answers[qIdx] = [];
+      const arr = state.answers[qIdx];
+      const i = arr.indexOf(letter);
+      if (i >= 0) arr.splice(i, 1);
+      else arr.push(letter);
+      if (arr.length === 0) delete state.answers[qIdx];
+    }
+    renderQuestions();
+  }
+
+  function submit() {
+    state.submitted = true;
+    const username = getCurrentUser();
+    const studentData = getStudentData(username);
+
+    let correct = 0;
+    questions.forEach((q, idx) => {
+      const isRight = isCorrect(q, state.answers[idx]);
+      if (isRight) correct++;
+      studentData.answers[type][q.id] = {
+        answer: state.answers[idx] || null,
+        correct: isRight,
+        time: Date.now()
+      };
+    });
+    setStudentData(username, studentData);
+
+    resultEl.classList.add('show');
+    resultEl.innerHTML = `
+      <div>本次成绩</div>
+      <div class="score-num">${correct} / ${questions.length}</div>
+      <div class="score-text">${getScoreText(correct, questions.length)}</div>
+      <div class="encourage">${getEncourage(correct, questions.length)}</div>
+    `;
+    submitBtn.disabled = true;
+    renderQuestions();
+    resultEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  function reset() {
+    state.answers = {};
+    state.submitted = false;
+    resultEl.classList.remove('show');
+    renderQuestions();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  submitBtn.onclick = submit;
+  document.getElementById(`${type}-reset`).onclick = reset;
+  renderQuestions();
+}
+
+// =================== 概览 ===================
+function renderOverview() {
+  const username = getCurrentUser();
+  if (!username) return;
+  const data = getStudentData(username);
+  const all = [...Object.values(data.answers.single), ...Object.values(data.answers.multiple)];
+  const total = all.length;
+  const correct = all.filter(a => a.correct).length;
+  const rate = total > 0 ? Math.round(correct / total * 100) : 0;
+
+  document.getElementById('overview-grid').innerHTML = `
+    <div class="overview-card">
+      <div class="label">累计答题数</div>
+      <div class="value">${total}</div>
+      <div class="sub">单选 ${Object.keys(data.answers.single).length} · 多选 ${Object.keys(data.answers.multiple).length}</div>
+    </div>
+    <div class="overview-card">
+      <div class="label">正确题数</div>
+      <div class="value" style="color:var(--success)">${correct}</div>
+      <div class="sub">已答 ${total} 题</div>
+    </div>
+    <div class="overview-card">
+      <div class="label">正确率</div>
+      <div class="value">${rate}%</div>
+      <div class="sub">${rate >= 80 ? '状态很棒!' : '继续加油~'}</div>
+    </div>
+    <div class="overview-card">
+      <div class="label">错题待巩固</div>
+      <div class="value" style="color:var(--danger)">${getWrongQuestions().length}</div>
+      <div class="sub">去错题本再练一次</div>
+    </div>
+  `;
+
+  const wrongItems = getWrongQuestions().slice(0, 5);
+  document.getElementById('recent-wrong-list').innerHTML = wrongItems.length === 0 ?
+    '<div style="color:var(--text-light);font-size:13px;padding:10px 0">暂无错题,继续保持哦~</div>' :
+    wrongItems.map(item => {
+      const found = findQuestion(item.id);
+      return `<div class="wrong-item">
+        <span class="q-id">${item.type === 'single' ? '单选' : '多选'} ${item.id.toUpperCase()}</span>
+        <span class="q-text-preview">${found ? found.q.text.replace(/<[^>]+>/g, '').slice(0, 36) + '...' : ''}</span>
+        <span style="color:var(--text-light);font-size:12px;white-space:nowrap">${timeAgo(item.lastWrongTime)}</span>
+      </div>`;
+    }).join('');
+}
+
+// =================== 错题本 ===================
+function renderWrongBook() {
+  const wrongItems = getWrongQuestions();
+  if (wrongItems.length === 0) {
+    document.getElementById('wrong-content').innerHTML = `
+      <div class="empty-state">
+        <div class="emoji">🎉</div>
+        <div>暂无错题</div>
+        <div class="tip">继续保持,期待你下次练习也一样棒!</div>
+      </div>
+    `;
+    return;
+  }
+
+  const singleWrong = wrongItems.filter(w => w.type === 'single');
+  const multipleWrong = wrongItems.filter(w => w.type === 'multiple');
+
+  document.getElementById('wrong-content').innerHTML = `
+    <div class="wrong-list">
+      <h3 style="margin-bottom:10px">📒 我的错题 (共 ${wrongItems.length} 道)</h3>
+      <div style="font-size:13px;color:var(--text-light);margin-bottom:14px">点击下方按钮针对错题重新练习,巩固薄弱知识点。本次答对的题将从错题本移出。</div>
+      <div style="display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap">
+        ${singleWrong.length > 0 ? `<button class="btn" onclick="startWrongQuiz('single')">🔁 单选错题重练 (${singleWrong.length})</button>` : ''}
+        ${multipleWrong.length > 0 ? `<button class="btn" onclick="startWrongQuiz('multiple')">🔁 多选错题重练 (${multipleWrong.length})</button>` : ''}
+      </div>
+      <h4 style="margin:14px 0 6px;font-size:14px;color:var(--text-light)">错题列表</h4>
+      ${wrongItems.map(item => {
+        const found = findQuestion(item.id);
+        return `<div class="wrong-item">
+          <span class="q-id">${item.type === 'single' ? '单选' : '多选'} ${item.id.toUpperCase()}</span>
+          <span class="q-text-preview">${found ? found.q.text.replace(/<[^>]+>/g, '') : ''}</span>
+        </div>`;
+      }).join('')}
+    </div>
+    <div id="wrong-quiz-area"></div>
+  `;
+}
+
+window.startWrongQuiz = function(type) {
+  const wrongItems = getWrongQuestions().filter(w => w.type === type);
+  if (wrongItems.length === 0) return;
+
+  const allTypeQuestions = QUESTIONS[type];
+  const wrongQuestions = wrongItems.map(w => allTypeQuestions.find(q => q.id === w.id)).filter(Boolean);
+
+  const area = document.getElementById('wrong-quiz-area');
+  area.innerHTML = `
+    <div class="wrong-list" style="margin-top:16px">
+      <h3 style="margin-bottom:14px">🔁 ${type === 'single' ? '单选' : '多选'}错题重练</h3>
+      <div id="wrong-progress" style="margin-bottom:14px"></div>
+      <div id="wrong-quiz-list"></div>
+      <div class="actions">
+        <button class="btn" id="wrong-submit" disabled>提交答案</button>
+        <button class="btn secondary" id="wrong-collapse">收起错题</button>
+      </div>
+      <div class="result-card" id="wrong-result"></div>
+    </div>
+  `;
+
+  let wAns = {};
+  let wSubmitted = false;
+
+  function renderWrongProgress() {
+    const ans = Object.keys(wAns).length;
+    const pct = Math.round(ans / wrongQuestions.length * 100);
+    document.getElementById('wrong-progress').innerHTML = `
+      <div class="progress-bar">
+        <div class="progress-info">
+          <span>错题重练 · 已作答 ${ans} / ${wrongQuestions.length}</span>
+          <span>${pct}%</span>
+        </div>
+        <div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div>
+      </div>
+    `;
+    document.getElementById('wrong-submit').disabled = ans !== wrongQuestions.length || wSubmitted;
+  }
+
+  function renderWrongQs() {
+    const list = document.getElementById('wrong-quiz-list');
+    list.innerHTML = '';
+    wrongQuestions.forEach((q, idx) => {
+      const card = document.createElement('div');
+      card.className = 'question-card';
+      card.innerHTML = `
+        <div class="q-title">
+          <div class="q-num ${wSubmitted ? 'done' : ''}">${idx + 1}</div>
+          <div class="q-text">${q.text}<span class="q-tag">${q.tag}</span></div>
+        </div>
+        <div class="options" id="wop-${idx}"></div>
+        <div class="feedback" id="wfb-${idx}"></div>
+      `;
+      list.appendChild(card);
+
+      const optsEl = card.querySelector('.options');
+      const userAns = wAns[idx];
+      const userAnsArr = Array.isArray(userAns) ? userAns : (userAns ? [userAns] : []);
+
+      q.options.forEach(opt => {
+        const div = document.createElement('div');
+        div.className = 'option';
+        div.innerHTML = `<span class="opt-letter">${opt.letter}</span><span class="opt-text">${opt.text}</span><span class="opt-icon"></span>`;
+        if (wSubmitted) {
+          div.classList.add('disabled');
+          const correctArr = Array.isArray(q.answer) ? q.answer : [q.answer];
+          if (correctArr.includes(opt.letter)) {
+            div.classList.add('correct-answer');
+            div.querySelector('.opt-icon').textContent = '✓';
+          } else if (userAnsArr.includes(opt.letter)) {
+            div.classList.add('wrong-pick');
+            div.querySelector('.opt-icon').textContent = '✗';
+          }
+        } else {
+          if (userAnsArr.includes(opt.letter)) div.classList.add('selected');
+        }
+        div.addEventListener('click', () => {
+          if (wSubmitted) return;
+          if (type === 'single') wAns[idx] = opt.letter;
+          else {
+            if (!wAns[idx]) wAns[idx] = [];
+            const i = wAns[idx].indexOf(opt.letter);
+            if (i >= 0) wAns[idx].splice(i, 1);
+            else wAns[idx].push(opt.letter);
+            if (wAns[idx].length === 0) delete wAns[idx];
+          }
+          renderWrongQs();
+        });
+        optsEl.appendChild(div);
+      });
+
+      if (wSubmitted) {
+        const fb = card.querySelector('.feedback');
+        fb.classList.add('show');
+        const isRight = isCorrect(q, wAns[idx]);
+        fb.classList.add(isRight ? 'correct' : 'wrong');
+        const correctText = Array.isArray(q.answer) ? q.answer.join('、') : q.answer;
+        fb.innerHTML = `<strong>${isRight ? '✓ 回答正确' : '✗ 回答错误,正确答案是 ' + correctText}</strong>${q.explain}`;
+        card.classList.add(isRight ? 'correct' : 'wrong');
+      }
+    });
+    renderWrongProgress();
+  }
+
+  document.getElementById('wrong-submit').onclick = () => {
+    wSubmitted = true;
+    let correct = 0;
+    const username = getCurrentUser();
+    const studentData = getStudentData(username);
+    wrongQuestions.forEach((q, idx) => {
+      const isRight = isCorrect(q, wAns[idx]);
+      if (isRight) correct++;
+      studentData.answers[type][q.id] = {
+        answer: wAns[idx] || null,
+        correct: isRight,
+        time: Date.now()
+      };
+    });
+    setStudentData(username, studentData);
+
+    const resultEl = document.getElementById('wrong-result');
+    resultEl.classList.add('show');
+    resultEl.innerHTML = `
+      <div>错题重练成绩</div>
+      <div class="score-num">${correct} / ${wrongQuestions.length}</div>
+      <div class="score-text">${getScoreText(correct, wrongQuestions.length)}</div>
+      <div class="encourage">${correct === wrongQuestions.length ? '太棒了!错题全部掌握,可以移出错题本了 🎉' : '还需要继续巩固,再来一次吧!'}</div>
+    `;
+    document.getElementById('wrong-submit').disabled = true;
+    renderWrongQs();
+    resultEl.scrollIntoView({ behavior: 'smooth' });
+    setTimeout(() => { renderWrongBook(); }, 800);
+  };
+
+  document.getElementById('wrong-collapse').onclick = () => {
+    area.innerHTML = '';
+  };
+
+  renderWrongQs();
+};
+
+// =================== 统计 ===================
+function renderStats() {
+  const username = getCurrentUser();
+  if (!username) return;
+  const data = getStudentData(username);
+
+  const types = ['single', 'multiple'];
+  const stats = types.map(type => {
+    const ans = data.answers[type];
+    const total = Object.keys(ans).length;
+    const correct = Object.values(ans).filter(a => a.correct).length;
+    return { type, total, correct, wrong: total - correct, rate: total > 0 ? Math.round(correct / total * 100) : 0 };
+  });
+
+  const totalAll = stats.reduce((s, x) => s + x.total, 0);
+  const correctAll = stats.reduce((s, x) => s + x.correct, 0);
+  const rateAll = totalAll > 0 ? Math.round(correctAll / totalAll * 100) : 0;
+
+  document.getElementById('stats-grid').innerHTML = `
+    <div class="stat-card">
+      <div class="label">总答题数</div>
+      <div class="value" style="color:var(--primary)">${totalAll}</div>
+      <div class="sub">单选 ${stats[0].total} · 多选 ${stats[1].total}</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">总正确数</div>
+      <div class="value" style="color:var(--success)">${correctAll}</div>
+      <div class="sub">已答 ${totalAll} 题</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">总正确率</div>
+      <div class="value">${rateAll}%</div>
+      <div class="sub">${rateAll >= 80 ? '表现优秀' : '继续加油'}</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">单选题正确率</div>
+      <div class="value">${stats[0].rate}%</div>
+      <div class="sub">${stats[0].correct}/${stats[0].total}</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">多选题正确率</div>
+      <div class="value">${stats[1].rate}%</div>
+      <div class="sub">${stats[1].correct}/${stats[1].total}</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">待巩固错题</div>
+      <div class="value" style="color:var(--danger)">${getWrongQuestions().length}</div>
+      <div class="sub">去错题本继续练习</div>
+    </div>
+  `;
+
+  const wrongItems = getWrongQuestions();
+  document.getElementById('wrong-detail').innerHTML = wrongItems.length === 0 ?
+    '<div style="color:var(--text-light);font-size:13px;padding:10px 0">暂无错题,继续保持哦~</div>' :
+    wrongItems.map(item => {
+      const found = findQuestion(item.id);
+      return `<div class="wrong-item">
+        <span class="q-id">${item.type === 'single' ? '单选' : '多选'} ${item.id.toUpperCase()}</span>
+        <span class="q-text-preview">${found ? found.q.text.replace(/<[^>]+>/g, '').slice(0, 50) + '...' : ''}</span>
+        <span style="color:var(--text-light);font-size:12px;white-space:nowrap">${timeAgo(item.lastWrongTime)}</span>
+      </div>`;
+    }).join('');
+}
+
+// =================== 设置 ===================
+function renderSettings() {
+  const username = getCurrentUser();
+  const data = getStudentData(username);
+
+  document.getElementById('theme-grid').innerHTML = THEMES.map(t => `
+    <div class="theme-card ${t.id === data.theme ? 'active' : ''}" data-theme="${t.id}">
+      <div class="theme-swatch" style="background:linear-gradient(135deg, ${t.primary}, ${t.light})"></div>
+      <div class="theme-name">${t.name}</div>
+    </div>
+  `).join('');
+
+  document.querySelectorAll('.theme-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const themeId = card.dataset.theme;
+      data.theme = themeId;
+      setStudentData(username, data);
+      applyTheme(themeId);
+      renderSettings();
+    });
+  });
+
+  document.getElementById('student-list').innerHTML = STUDENTS.map(s => `
+    <div class="student-chip">${s.name}</div>
+  `).join('');
+}
+
+function applyTheme(themeId) {
+  const theme = THEMES.find(t => t.id === themeId) || THEMES[0];
+  const root = document.documentElement.style;
+  root.setProperty('--primary', theme.primary);
+  root.setProperty('--primary-light', theme.light);
+  root.setProperty('--primary-dark', theme.dark);
+  root.setProperty('--primary-bg', theme.bg);
+}
+
+// =================== 路由 ===================
+function showSection(tabName) {
+  document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+  document.getElementById('section-' + tabName).classList.add('active');
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector(`.tab-btn[data-tab="${tabName}"]`).classList.add('active');
+  if (tabName === 'home') renderOverview();
+  else if (tabName === 'stats') renderStats();
+  else if (tabName === 'wrong') renderWrongBook();
+  else if (tabName === 'settings') renderSettings();
+}
+
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => showSection(btn.dataset.tab));
+});
+
+// =================== 登录 ===================
+function tryLogin() {
+  const username = document.getElementById('username').value.trim();
+  const password = document.getElementById('password').value;
+  const errorEl = document.getElementById('login-error');
+
+  const student = STUDENTS.find(s => s.username === username || s.name === username);
+  if (!student) {
+    errorEl.textContent = '姓名不存在,请输入名单中的中文姓名';
+    errorEl.classList.add('show');
+    return;
+  }
+  if (student.password !== password) {
+    errorEl.textContent = '密码错误,默认密码为 123456';
+    errorEl.classList.add('show');
+    return;
+  }
+
+  errorEl.classList.remove('show');
+  setCurrentUser(student.username);
+  enterApp();
+}
+
+function enterApp() {
+  const username = getCurrentUser();
+  const student = STUDENTS.find(s => s.username === username);
+  document.getElementById('login-page').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+  document.getElementById('current-user-name').textContent = student.name;
+
+  const data = getStudentData(username);
+  applyTheme(data.theme);
+
+  singleState = { answers: {}, submitted: false };
+  multipleState = { answers: {}, submitted: false };
+  renderQuiz('single', 'single-quiz', 'single-progress', 'single-submit', 'single-result');
+  renderQuiz('multiple', 'multiple-quiz', 'multiple-progress', 'multiple-submit', 'multiple-result');
+
+  showSection('home');
+}
+
+function logout() {
+  setCurrentUser(null);
+  document.getElementById('app').style.display = 'none';
+  document.getElementById('login-page').style.display = 'block';
+  document.getElementById('password').value = '';
+  document.getElementById('username').value = '';
+}
+
+document.getElementById('login-btn').addEventListener('click', tryLogin);
+document.getElementById('password').addEventListener('keypress', e => {
+  if (e.key === 'Enter') tryLogin();
+});
+document.getElementById('logout-btn').addEventListener('click', logout);
+
+// 清除数据
+document.getElementById('clear-data-btn').addEventListener('click', () => {
+  if (!confirm('确定要清除所有答题记录吗?此操作不可恢复!')) return;
+  const username = getCurrentUser();
+  const data = getStudentData(username);
+  data.answers = { single: {}, multiple: {} };
+  setStudentData(username, data);
+  alert('已清除所有答题记录');
+  renderOverview();
+  renderStats();
+  renderWrongBook();
+});
+
+// 启动:若已登录,直接进入应用
+if (getCurrentUser()) {
+  enterApp();
+}
+</script>
+
+</body>
+</html>
