@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Scratch 编程练习平台 · 第1课</title>
+<title>Scratch 编程练习平台 · 全课程</title>
 <style>
 :root {
   --primary: #ff8c42;
@@ -29,401 +29,166 @@ body {
   padding: 16px;
   line-height: 1.7;
 }
-
 /* === 登录界面 === */
-.login-container {
-  max-width: 420px;
-  margin: 80px auto;
-  background: #fff;
-  border-radius: 16px;
-  padding: 40px 32px;
-  box-shadow: 0 12px 36px rgba(0,0,0,0.08);
-}
-.login-logo {
-  width: 80px; height: 80px;
-  margin: 0 auto 16px;
-  background: linear-gradient(135deg, var(--primary), var(--primary-light));
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 36px; color: #fff;
-  box-shadow: 0 6px 18px rgba(255,140,66,0.3);
-}
+.login-container { max-width: 420px; margin: 60px auto; background: #fff; border-radius: 16px; padding: 40px 32px; box-shadow: 0 12px 36px rgba(0,0,0,0.08); }
+.login-logo { width: 80px; height: 80px; margin: 0 auto 16px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 36px; color: #fff; box-shadow: 0 6px 18px rgba(255,140,66,0.3); }
 .login-container h1 { text-align: center; font-size: 22px; margin-bottom: 8px; }
 .login-container .subtitle { text-align: center; color: var(--text-light); font-size: 14px; margin-bottom: 28px; }
 .form-group { margin-bottom: 18px; }
 .form-group label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; }
-.form-group input {
-  width: 100%; padding: 12px 14px;
-  border: 1.5px solid #e3e9f0;
-  border-radius: 8px; font-size: 15px;
-  transition: border-color 0.2s; outline: none;
-}
+.form-group input { width: 100%; padding: 12px 14px; border: 1.5px solid #e3e9f0; border-radius: 8px; font-size: 15px; transition: border-color 0.2s; outline: none; }
 .form-group input:focus { border-color: var(--primary); }
-.login-btn {
-  width: 100%;
-  background: linear-gradient(135deg, var(--primary), var(--primary-light));
-  color: #fff; border: none; padding: 13px;
-  border-radius: 8px; font-size: 16px; font-weight: 500;
-  cursor: pointer; transition: transform 0.15s;
-}
+.login-btn { width: 100%; background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: #fff; border: none; padding: 13px; border-radius: 8px; font-size: 16px; font-weight: 500; cursor: pointer; transition: transform 0.15s; }
 .login-btn:hover { transform: translateY(-1px); }
-.login-hint {
-  margin-top: 18px; padding: 12px;
-  background: var(--primary-bg);
-  border-radius: 8px; font-size: 12px;
-  color: var(--text-light); line-height: 1.6;
-}
+.login-hint { margin-top: 18px; padding: 12px; background: var(--primary-bg); border-radius: 8px; font-size: 12px; color: var(--text-light); line-height: 1.6; }
 .login-hint strong { color: var(--primary-dark); }
-.login-error {
-  background: var(--danger-bg); color: #c62828;
-  padding: 10px 14px; border-radius: 8px;
-  font-size: 14px; margin-bottom: 16px;
-  display: none;
-}
+.login-error { background: var(--danger-bg); color: #c62828; padding: 10px 14px; border-radius: 8px; font-size: 14px; margin-bottom: 16px; display: none; }
 .login-error.show { display: block; }
-
 /* === 主应用 === */
-.app-container { max-width: 960px; margin: 0 auto; }
-.app-header {
-  background: linear-gradient(135deg, var(--primary), var(--primary-light));
-  color: #fff;
-  border-radius: 14px;
-  padding: 20px 28px;
-  margin-bottom: 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 6px 18px rgba(255,140,66,0.18);
-  gap: 12px;
-}
-.app-header h1 { font-size: 20px; }
+.app-container { max-width: 1000px; margin: 0 auto; }
+.app-header { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: #fff; border-radius: 14px; padding: 18px 26px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 6px 18px rgba(255,140,66,0.18); gap: 12px; }
+.app-header h1 { font-size: 19px; }
 .app-header .header-info { display: flex; align-items: center; gap: 12px; font-size: 14px; flex-wrap: wrap; }
-.user-badge {
-  background: rgba(255,255,255,0.22);
-  padding: 6px 14px;
-  border-radius: 999px;
-  display: flex; align-items: center; gap: 6px;
-}
-.logout-btn {
-  background: rgba(255,255,255,0.18);
-  border: 1px solid rgba(255,255,255,0.3);
-  color: #fff; padding: 6px 14px;
-  border-radius: 999px;
-  cursor: pointer; font-size: 13px;
-  transition: background 0.15s;
-}
+.user-badge { background: rgba(255,255,255,0.22); padding: 6px 14px; border-radius: 999px; display: flex; align-items: center; gap: 6px; }
+.logout-btn { background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3); color: #fff; padding: 6px 14px; border-radius: 999px; cursor: pointer; font-size: 13px; transition: background 0.15s; }
 .logout-btn:hover { background: rgba(255,255,255,0.3); }
-
-/* === 标签页 === */
-.tabs {
-  background: #fff;
-  border-radius: 12px;
-  padding: 6px;
-  margin-bottom: 16px;
-  display: flex;
-  gap: 4px;
-  overflow-x: auto;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-}
-.tab-btn {
-  flex: 1; min-width: 90px;
-  background: transparent; border: none;
-  padding: 10px 12px; border-radius: 8px;
-  cursor: pointer; font-size: 13px;
-  color: var(--text-light);
-  transition: all 0.15s;
-  font-weight: 500;
-  white-space: nowrap;
-}
+/* === 顶部导航 === */
+.tabs { background: #fff; border-radius: 12px; padding: 6px; margin-bottom: 16px; display: flex; gap: 4px; overflow-x: auto; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+.tab-btn { flex: 1; min-width: 88px; background: transparent; border: none; padding: 10px 12px; border-radius: 8px; cursor: pointer; font-size: 13px; color: var(--text-light); transition: all 0.15s; font-weight: 500; white-space: nowrap; }
 .tab-btn:hover { background: var(--primary-bg); color: var(--primary-dark); }
-.tab-btn.active {
-  background: linear-gradient(135deg, var(--primary), var(--primary-light));
-  color: #fff;
-}
-
-/* === 主内容 === */
+.tab-btn.active { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: #fff; }
 #main-content { animation: fadeIn 0.3s ease; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 .page-section { display: none; }
 .page-section.active { display: block; }
-
-/* 概览卡片 */
-.overview-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-  gap: 14px;
-  margin-bottom: 18px;
-}
-.overview-card {
-  background: #fff;
-  border-radius: 12px;
-  padding: 18px 20px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-}
+/* === 概览卡片 === */
+.overview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 18px; }
+.overview-card { background: #fff; border-radius: 12px; padding: 16px 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
 .overview-card .label { font-size: 13px; color: var(--text-light); margin-bottom: 6px; }
-.overview-card .value { font-size: 28px; font-weight: 700; color: var(--primary); }
+.overview-card .value { font-size: 26px; font-weight: 700; color: var(--primary); }
 .overview-card .sub { font-size: 12px; color: var(--text-light); margin-top: 4px; }
-
-/* 题目卡片 */
-.question-card {
-  background: #fff;
-  border-radius: 12px;
-  padding: 22px 26px;
-  margin-bottom: 14px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  border: 1.5px solid var(--border);
-  transition: border-color 0.2s;
-}
+/* === 课程卡片 === */
+.section-title { font-size: 17px; margin: 4px 0 14px; display: flex; align-items: center; gap: 8px; }
+.lesson-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+.lesson-card { background: #fff; border-radius: 12px; padding: 18px 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); border: 2px solid transparent; cursor: pointer; transition: all 0.15s; position: relative; }
+.lesson-card:hover { transform: translateY(-2px); border-color: var(--primary-light); box-shadow: 0 6px 16px rgba(0,0,0,0.08); }
+.lesson-card .lesson-no { position: absolute; top: 14px; right: 16px; font-size: 12px; color: var(--text-light); }
+.lesson-card h3 { font-size: 16px; margin-bottom: 6px; padding-right: 40px; }
+.lesson-card .lesson-goal { font-size: 13px; color: var(--text-light); margin-bottom: 10px; min-height: 40px; }
+.lesson-progress-mini { display: flex; align-items: center; gap: 10px; }
+.mini-track { flex: 1; height: 6px; background: #e9eef4; border-radius: 3px; overflow: hidden; }
+.mini-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--primary-light)); transition: width 0.4s; }
+.mini-text { font-size: 12px; color: var(--text-light); white-space: nowrap; }
+.lesson-card .status-badge { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 11px; margin-top: 10px; }
+.status-badge.done { background: var(--success-bg); color: #2e7d32; }
+.status-badge.part { background: var(--primary-bg); color: var(--primary-dark); }
+.status-badge.todo { background: #f0f3f7; color: var(--text-light); }
+/* === 课程详情 === */
+.lesson-detail { background: #fff; border-radius: 12px; padding: 22px 26px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+.lesson-detail h2 { font-size: 19px; margin-bottom: 10px; }
+.lesson-detail .goal { font-size: 14px; color: var(--text); margin-bottom: 10px; }
+.points { display: flex; flex-wrap: wrap; gap: 8px; }
+.point-chip { background: var(--primary-bg); color: var(--primary-dark); padding: 4px 12px; border-radius: 999px; font-size: 12px; }
+.quiz-entry-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 6px; }
+.quiz-entry { background: #fff; border-radius: 12px; padding: 20px 22px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); border: 2px solid var(--border); cursor: pointer; transition: all 0.15s; text-align: center; }
+.quiz-entry:hover { border-color: var(--primary); transform: translateY(-2px); }
+.quiz-entry .qe-icon { font-size: 32px; margin-bottom: 6px; }
+.quiz-entry h4 { font-size: 16px; margin-bottom: 4px; }
+.quiz-entry .qe-sub { font-size: 12px; color: var(--text-light); }
+.quiz-entry .qe-status { margin-top: 8px; font-size: 12px; }
+.back-btn { background: #fff; border: 1.5px solid var(--border); color: var(--text-light); padding: 6px 14px; border-radius: 999px; cursor: pointer; font-size: 13px; margin-bottom: 12px; transition: all 0.15s; }
+.back-btn:hover { color: var(--primary-dark); border-color: var(--primary-light); }
+/* === 题目卡片 === */
+.question-card { background: #fff; border-radius: 12px; padding: 22px 26px; margin-bottom: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); border: 1.5px solid var(--border); transition: border-color 0.2s; }
 .question-card.correct { border-color: var(--success); }
 .question-card.wrong { border-color: var(--danger); }
 .q-title { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
-.q-num {
-  flex: 0 0 32px; height: 32px;
-  background: var(--primary);
-  color: #fff;
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 600; font-size: 14px;
-}
-.q-num.done { background: #90a4ae; }
+.q-num { flex: 0 0 32px; height: 32px; background: var(--primary); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 14px; }
 .q-text { flex: 1; font-size: 16px; font-weight: 600; line-height: 1.6; }
-.q-tag {
-  display: inline-block;
-  background: var(--primary-bg);
-  color: var(--primary-dark);
-  padding: 2px 10px;
-  border-radius: 999px;
-  font-size: 12px;
-  margin-left: 6px;
-  font-weight: normal;
-  vertical-align: middle;
-}
-.q-type {
-  display: inline-block;
-  background: #e3edf7;
-  color: var(--secondary);
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-size: 11px;
-  margin-left: 4px;
-  font-weight: normal;
-  vertical-align: middle;
-}
+.q-tag { display: inline-block; background: var(--primary-bg); color: var(--primary-dark); padding: 2px 10px; border-radius: 999px; font-size: 12px; margin-left: 6px; font-weight: normal; vertical-align: middle; }
+.q-type { display: inline-block; background: #e3edf7; color: var(--secondary); padding: 2px 8px; border-radius: 4px; font-size: 11px; margin-left: 4px; font-weight: normal; vertical-align: middle; }
 .options { display: flex; flex-direction: column; gap: 8px; }
-.option {
-  background: #f7f9fc;
-  border: 1.5px solid #e3e9f0;
-  border-radius: 8px;
-  padding: 10px 14px;
-  cursor: pointer;
-  transition: all 0.15s;
-  display: flex; align-items: center;
-  gap: 10px; font-size: 14px;
-  user-select: none;
-}
+.option { background: #f7f9fc; border: 1.5px solid #e3e9f0; border-radius: 8px; padding: 10px 14px; cursor: pointer; transition: all 0.15s; display: flex; align-items: center; gap: 10px; font-size: 14px; user-select: none; }
 .option:hover:not(.disabled) { background: var(--primary-bg); border-color: var(--primary-light); }
 .option.selected { background: var(--primary-bg); border-color: var(--primary); }
 .option.disabled { cursor: not-allowed; opacity: 0.7; }
 .option.correct-answer { background: var(--success-bg); border-color: var(--success); color: #2e7d32; }
 .option.wrong-pick { background: var(--danger-bg); border-color: var(--danger); color: #c62828; }
-.opt-letter {
-  flex: 0 0 26px; height: 26px;
-  border-radius: 50%;
-  background: #fff;
-  border: 1.5px solid #c4cfdb;
-  color: var(--text-light);
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 600; font-size: 13px;
-}
+.opt-letter { flex: 0 0 26px; height: 26px; border-radius: 50%; background: #fff; border: 1.5px solid #c4cfdb; color: var(--text-light); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 13px; }
 .option.selected .opt-letter { background: var(--primary); color: #fff; border-color: var(--primary); }
 .option.correct-answer .opt-letter { background: var(--success); color: #fff; border-color: var(--success); }
 .option.wrong-pick .opt-letter { background: var(--danger); color: #fff; border-color: var(--danger); }
 .opt-text { flex: 1; }
 .opt-icon { flex: 0 0 20px; font-size: 16px; display: none; }
 .option.correct-answer .opt-icon, .option.wrong-pick .opt-icon { display: inline; }
-
-.feedback {
-  margin-top: 12px;
-  padding: 10px 14px;
-  border-radius: 8px;
-  font-size: 13px;
-  display: none;
-  line-height: 1.6;
-}
+.feedback { margin-top: 12px; padding: 10px 14px; border-radius: 8px; font-size: 13px; display: none; line-height: 1.6; }
 .feedback.show { display: block; }
 .feedback.correct { background: var(--success-bg); color: #2e7d32; border-left: 3px solid var(--success); }
 .feedback.wrong { background: var(--danger-bg); color: #c62828; border-left: 3px solid var(--danger); }
 .feedback strong { display: block; margin-bottom: 4px; }
-
-.actions {
-  display: flex; gap: 12px; justify-content: center;
-  margin-top: 20px; flex-wrap: wrap;
-}
-.btn {
-  background: linear-gradient(135deg, var(--primary), var(--primary-light));
-  color: #fff; border: none;
-  padding: 11px 24px;
-  border-radius: 8px; font-size: 14px;
-  font-weight: 500; cursor: pointer;
-  transition: all 0.15s;
-}
+.actions { display: flex; gap: 12px; justify-content: center; margin-top: 20px; flex-wrap: wrap; }
+.btn { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: #fff; border: none; padding: 11px 24px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.15s; }
 .btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(255,140,66,0.3); }
 .btn:disabled { background: #c4cfdb; cursor: not-allowed; transform: none; box-shadow: none; }
-.btn.secondary {
-  background: #fff; color: var(--primary-dark);
-  border: 1.5px solid var(--primary);
-}
+.btn.secondary { background: #fff; color: var(--primary-dark); border: 1.5px solid var(--primary); }
 .btn.secondary:hover { background: var(--primary-bg); }
-
 /* 进度条 */
-.progress-bar {
-  background: #fff;
-  border-radius: 12px;
-  padding: 14px 20px;
-  margin-bottom: 16px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-}
+.progress-bar { background: #fff; border-radius: 12px; padding: 14px 20px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
 .progress-info { display: flex; justify-content: space-between; font-size: 13px; color: var(--text-light); margin-bottom: 8px; }
 .progress-track { width: 100%; height: 8px; background: #e9eef4; border-radius: 4px; overflow: hidden; }
-.progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--primary), var(--primary-light));
-  width: 0%; transition: width 0.4s ease;
-}
-
+.progress-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--primary-light)); width: 0%; transition: width 0.4s ease; }
 /* 成绩卡 */
-.result-card {
-  background: linear-gradient(135deg, var(--primary), var(--primary-light));
-  color: #fff;
-  border-radius: 14px;
-  padding: 24px;
-  text-align: center;
-  margin-top: 20px;
-  box-shadow: 0 6px 18px rgba(255,140,66,0.2);
-  display: none;
-}
+.result-card { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: #fff; border-radius: 14px; padding: 24px; text-align: center; margin-top: 20px; box-shadow: 0 6px 18px rgba(255,140,66,0.2); display: none; }
 .result-card.show { display: block; animation: fadeIn 0.4s ease; }
 .score-num { font-size: 44px; font-weight: 700; margin: 10px 0; }
 .score-text { font-size: 16px; opacity: 0.95; margin-bottom: 12px; }
-.encourage {
-  background: rgba(255,255,255,0.18);
-  border-radius: 8px;
-  padding: 10px 14px;
-  font-size: 13px;
-  margin-top: 8px;
-}
-
+.encourage { background: rgba(255,255,255,0.18); border-radius: 8px; padding: 10px 14px; font-size: 13px; margin-top: 8px; }
 /* 错题本 */
-.wrong-list {
-  background: #fff;
-  border-radius: 12px;
-  padding: 16px 20px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-}
-.wrong-item {
-  padding: 10px 0;
-  border-bottom: 1px solid #f0f4f9;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 14px;
-  gap: 12px;
-}
+.wrong-list { background: #fff; border-radius: 12px; padding: 16px 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); margin-bottom: 16px; }
+.wrong-group-title { font-size: 14px; font-weight: 600; margin: 14px 0 6px; color: var(--primary-dark); }
+.wrong-item { padding: 10px 0; border-bottom: 1px solid #f0f4f9; display: flex; justify-content: space-between; align-items: center; font-size: 14px; gap: 12px; }
 .wrong-item:last-child { border-bottom: none; }
-.wrong-item .q-id {
-  background: var(--primary-bg);
-  color: var(--primary-dark);
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-size: 12px;
-  margin-right: 8px;
-  font-weight: 600;
-}
+.wrong-item .q-id { background: var(--primary-bg); color: var(--primary-dark); padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-right: 8px; font-weight: 600; white-space: nowrap; }
 .wrong-item .q-text-preview { flex: 1; color: var(--text); }
-
+.go-btn { background: var(--primary-bg); color: var(--primary-dark); border: 1px solid var(--primary-light); padding: 4px 12px; border-radius: 999px; cursor: pointer; font-size: 12px; white-space: nowrap; }
+.go-btn:hover { background: var(--primary); color: #fff; }
 /* 统计 */
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 14px;
-  margin-bottom: 18px;
-}
-.stat-card {
-  background: #fff;
-  border-radius: 12px;
-  padding: 18px 20px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-}
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin-bottom: 18px; }
+.stat-card { background: #fff; border-radius: 12px; padding: 18px 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
 .stat-card .label { font-size: 13px; color: var(--text-light); margin-bottom: 6px; }
 .stat-card .value { font-size: 26px; font-weight: 700; }
 .stat-card .sub { font-size: 12px; color: var(--text-light); margin-top: 4px; }
-
+.stats-table-wrap { background: #fff; border-radius: 12px; padding: 18px 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); overflow-x: auto; }
+.stats-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.stats-table th, .stats-table td { padding: 9px 10px; text-align: left; border-bottom: 1px solid #f0f4f9; white-space: nowrap; }
+.stats-table th { color: var(--text-light); font-weight: 600; font-size: 12px; }
+.stats-table td .rate-bar { display: inline-block; width: 70px; height: 6px; background: #e9eef4; border-radius: 3px; vertical-align: middle; margin-right: 6px; overflow: hidden; }
+.stats-table td .rate-bar i { display: block; height: 100%; background: linear-gradient(90deg, var(--primary), var(--primary-light)); }
 /* 主题色 */
-.theme-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-  gap: 12px;
-}
-.theme-card {
-  background: #fff;
-  border-radius: 12px;
-  padding: 18px 14px;
-  cursor: pointer;
-  border: 2px solid var(--border);
-  text-align: center;
-  transition: all 0.15s;
-}
+.theme-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 12px; }
+.theme-card { background: #fff; border-radius: 12px; padding: 18px 14px; cursor: pointer; border: 2px solid var(--border); text-align: center; transition: all 0.15s; }
 .theme-card:hover { transform: translateY(-2px); }
-.theme-card.active {
-  border-color: var(--primary);
-  box-shadow: 0 4px 12px rgba(255,140,66,0.2);
-}
-.theme-swatch {
-  width: 50px; height: 50px;
-  border-radius: 50%;
-  margin: 0 auto 8px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.12);
-}
+.theme-card.active { border-color: var(--primary); box-shadow: 0 4px 12px rgba(255,140,66,0.2); }
+.theme-swatch { width: 50px; height: 50px; border-radius: 50%; margin: 0 auto 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.12); }
 .theme-name { font-size: 13px; color: var(--text); font-weight: 500; }
-
 /* 设置页 */
-.settings-card {
-  background: #fff;
-  border-radius: 12px;
-  padding: 20px 24px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  margin-bottom: 16px;
-}
+.settings-card { background: #fff; border-radius: 12px; padding: 20px 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); margin-bottom: 16px; }
 .settings-card h3 { font-size: 16px; margin-bottom: 12px; color: var(--text); }
-.student-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 8px;
-  margin-top: 12px;
-}
-.student-chip {
-  background: var(--primary-bg);
-  padding: 8px 12px;
-  border-radius: 8px;
-  font-size: 13px;
-  color: var(--text);
-}
-
+.student-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; margin-top: 12px; }
+.student-chip { background: var(--primary-bg); padding: 8px 12px; border-radius: 8px; font-size: 13px; color: var(--text); }
 .empty-state { text-align: center; padding: 60px 20px; color: var(--text-light); }
 .empty-state .emoji { font-size: 56px; margin-bottom: 12px; }
 .empty-state .tip { font-size: 14px; margin-top: 6px; }
-
-footer {
-  text-align: center; color: #8898a8;
-  font-size: 12px; margin-top: 32px;
-}
-
-@media (max-width: 600px) {
+footer { text-align: center; color: #8898a8; font-size: 12px; margin-top: 32px; }
+@media (max-width: 640px) {
   .app-header { flex-direction: column; gap: 12px; align-items: flex-start; }
   .app-header .header-info { width: 100%; justify-content: space-between; }
   .question-card { padding: 18px 20px; }
   .q-text { font-size: 15px; }
+  .quiz-entry-row { grid-template-columns: 1fr; }
 }
+  .roster-input { flex:1; min-width:130px; padding:9px 12px; border:1px solid var(--border); border-radius:9px; font-size:14px; background:#fff; color:var(--text); outline:none; }
+  .roster-input:focus { border-color:var(--primary); }
 </style>
 </head>
 <body>
@@ -432,10 +197,10 @@ footer {
 <div id="login-page" class="login-container">
   <div class="login-logo">🎨</div>
   <h1>Scratch 编程练习平台</h1>
-  <div class="subtitle">第1课 初识编程 · 学生登录</div>
+  <div class="subtitle">图形化编程基础 A1 · 全课程课后练习</div>
   <div class="login-error" id="login-error"></div>
   <div class="form-group">
-    <label>用户名</label>
+    <label>姓名</label>
     <input type="text" id="username" placeholder="请输入姓名" autocomplete="username">
   </div>
   <div class="form-group">
@@ -445,8 +210,7 @@ footer {
   <button class="login-btn" id="login-btn">登 录</button>
   <div class="login-hint">
     💡 <strong>账号说明</strong><br>
-    请输入姓名,初始密码统一为 <strong>123456</strong><br>
-    学员名单可在登录后的「设置」页查看
+    请输入姓名,初始密码统一为 <strong>123456</strong>
   </div>
 </div>
 
@@ -460,45 +224,27 @@ footer {
     </div>
   </header>
 
-  <nav class="tabs">
-    <button class="tab-btn active" data-tab="home">📊 学习概览</button>
-    <button class="tab-btn" data-tab="single">📝 单选题</button>
-    <button class="tab-btn" data-tab="multiple">☑️ 多选题</button>
+  <nav class="tabs" id="main-tabs">
+    <button class="tab-btn active" data-tab="home">🏠 课程总览</button>
+    <button class="tab-btn" data-tab="teacher" id="tab-teacher" style="display:none">👨‍🏫 教师后台</button>
     <button class="tab-btn" data-tab="wrong">📒 错题本</button>
     <button class="tab-btn" data-tab="stats">📈 答题统计</button>
     <button class="tab-btn" data-tab="settings">⚙️ 设置</button>
   </nav>
 
   <main id="main-content">
-    <!-- 概览 -->
+    <!-- 课程总览 -->
     <section class="page-section active" id="section-home">
       <div class="overview-grid" id="overview-grid"></div>
-      <div class="wrong-list">
-        <h3 style="margin-bottom:10px">📌 最近错题预览</h3>
-        <div id="recent-wrong-list"></div>
-      </div>
+      <h3 class="section-title">📚 全部课程<span style="font-size:12px;color:var(--text-light);font-weight:normal">每课 5 道单选 + 5 道多选</span></h3>
+      <div class="lesson-grid" id="lesson-grid"></div>
     </section>
 
-    <!-- 单选题 -->
-    <section class="page-section" id="section-single">
-      <div class="progress-bar" id="single-progress"></div>
-      <div id="single-quiz"></div>
-      <div class="actions">
-        <button class="btn" id="single-submit" disabled>提交答案</button>
-        <button class="btn secondary" id="single-reset">重新练习</button>
-      </div>
-      <div class="result-card" id="single-result"></div>
-    </section>
-
-    <!-- 多选题 -->
-    <section class="page-section" id="section-multiple">
-      <div class="progress-bar" id="multiple-progress"></div>
-      <div id="multiple-quiz"></div>
-      <div class="actions">
-        <button class="btn" id="multiple-submit" disabled>提交答案</button>
-        <button class="btn secondary" id="multiple-reset">重新练习</button>
-      </div>
-      <div class="result-card" id="multiple-result"></div>
+    <!-- 课程详情 + 练习 -->
+    <section class="page-section" id="section-lesson">
+      <button class="back-btn" id="back-home-btn">← 返回课程总览</button>
+      <div id="lesson-detail"></div>
+      <div id="quiz-area"></div>
     </section>
 
     <!-- 错题本 -->
@@ -506,12 +252,42 @@ footer {
       <div id="wrong-content"></div>
     </section>
 
+    <!-- 教师后台 -->
+    <section class="page-section" id="section-teacher">
+      <div class="stats-grid" id="t-stats-grid"></div>
+      <div class="stats-table-wrap" style="margin-bottom:16px">
+        <h3 style="margin-bottom:10px;font-size:15px">👥 学生答题情况 <button class="btn secondary" id="t-refresh" style="float:right;padding:6px 14px;font-size:12px">🔄 立即刷新</button></h3>
+        <table class="stats-table" id="t-student-table"></table>
+      </div>
+            <div class="stats-table-wrap" id="roster-card" style="display:none;margin-bottom:16px">
+        <h3 style="margin-bottom:10px;font-size:15px">🧑‍🏫 学生名单管理 <span style="font-size:12px;color:var(--text-light);font-weight:normal">新增学生默认密码 123456，添加后立刻可以登录</span></h3>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+          <input class="roster-input" id="roster-name" placeholder="学生姓名（如 李明）" maxlength="12">
+          <input class="roster-input" id="roster-username" placeholder="拼音账号（选填，如 liming）" maxlength="20">
+          <button class="btn" id="roster-add" style="padding:9px 20px">➕ 添加学生</button>
+          <button class="btn secondary" id="roster-clean" style="padding:9px 18px">🧹 清理无效账号</button>
+          <button class="btn secondary" id="cloud-diag" style="padding:9px 18px">🔍 云连接诊断</button>
+          <span id="roster-msg" style="font-size:12px;align-self:center"></span>
+        </div>
+        <div id="diag-box" style="display:none;margin-bottom:12px;padding:12px 14px;background:var(--primary-bg);border-radius:10px;font-size:13px;line-height:1.8"></div>
+        <table class="stats-table" id="roster-table"></table>
+      </div>
+<div class="stats-table-wrap" style="margin-bottom:16px">
+        <h3 style="margin-bottom:10px;font-size:15px">📚 各课程全班正确率</h3>
+        <table class="stats-table" id="t-lesson-table"></table>
+      </div>
+      <div class="stats-table-wrap">
+        <h3 style="margin-bottom:10px;font-size:15px">🕐 最新答题动态 <span id="t-updated" style="font-size:12px;color:var(--text-light);font-weight:normal"></span></h3>
+        <table class="stats-table" id="t-activity"></table>
+      </div>
+    </section>
+
     <!-- 统计 -->
     <section class="page-section" id="section-stats">
       <div class="stats-grid" id="stats-grid"></div>
-      <div class="wrong-list">
-        <h3 style="margin-bottom:10px">📋 错题明细</h3>
-        <div id="wrong-detail"></div>
+      <div class="stats-table-wrap">
+        <h3 style="margin-bottom:10px;font-size:15px">📊 各课程正确率</h3>
+        <table class="stats-table" id="stats-table"></table>
       </div>
     </section>
 
@@ -520,9 +296,7 @@ footer {
       <div class="settings-card">
         <h3>🎨 主题色设置</h3>
         <div class="theme-grid" id="theme-grid"></div>
-        <div style="margin-top:14px;font-size:13px;color:var(--text-light)">
-          选择喜欢的主题色,所有界面元素(按钮、卡片、进度条、登录页等)会统一应用该颜色。
-        </div>
+        <div style="margin-top:14px;font-size:13px;color:var(--text-light)">选择喜欢的主题色,所有界面元素会统一应用该颜色。</div>
       </div>
       <div class="settings-card">
         <h3>👥 班级学生名单</h3>
@@ -530,9 +304,11 @@ footer {
       </div>
       <div class="settings-card">
         <h3>🔑 账号密码</h3>
-        <div style="font-size:13px;color:var(--text-light);line-height:1.7">
-          初始密码统一为 <strong>123456</strong>,用户名就是学生的中文姓名。
-        </div>
+        <div style="font-size:13px;color:var(--text-light);line-height:1.7">初始密码统一为 <strong>123456</strong>,登录时请输入自己的中文姓名。</div>
+      </div>
+      <div class="settings-card" id="cloud-card" style="display:none">
+        <h3>☁️ 云同步状态(教师)</h3>
+        <div id="cloud-status" style="font-size:13px;color:var(--text-light);line-height:1.7"></div>
       </div>
       <div class="settings-card">
         <h3 style="color:var(--danger)">⚠️ 数据管理</h3>
@@ -544,145 +320,12 @@ footer {
   <footer>老师寄语:编程是一个边玩边学的过程,做完题记得在 Scratch 里动手试试哦!🚀</footer>
 </div>
 
+<script src="quiz-data-1.js"></script>
+<script src="quiz-data-2.js"></script>
+<script src="quiz-data-3.js"></script>
+<script src="config.js"></script>
 <script>
-// =================== 数据定义 ===================
-const QUESTIONS = {
-  single: [
-    {
-      id: 's1',
-      text: 'Scratch 是一款怎样的软件?',
-      tag: '概念理解',
-      options: [
-        { letter: 'A', text: '一款主要用于打字练习的工具' },
-        { letter: 'B', text: '一款面向青少年的图形化编程工具,通过拖拽积木块来编写程序' },
-        { letter: 'C', text: '一款必须输入英文代码才能使用的专业软件' },
-        { letter: 'D', text: '一款只能在手机上运行的应用程序' }
-      ],
-      answer: 'B',
-      explain: 'Scratch 是由 MIT 媒体实验室开发的图形化编程工具,通过"搭积木"的方式编写程序,特别适合青少年入门编程。'
-    },
-    {
-      id: 's2',
-      text: '在 Scratch 中,要运行一个脚本(程序),通常需要点击哪个按钮?',
-      tag: '界面操作',
-      options: [
-        { letter: 'A', text: '红色圆形按钮(停止)' },
-        { letter: 'B', text: '绿色旗帜按钮(开始)' },
-        { letter: 'C', text: '蓝色箭头按钮' },
-        { letter: 'D', text: '黄色星形按钮' }
-      ],
-      answer: 'B',
-      explain: 'Scratch 舞台上的绿色旗帜是"开始运行"的标志,红色圆形是"停止运行"。常见的"当绿旗被点击"积木,就是用来响应绿旗点击事件的。'
-    },
-    {
-      id: 's3',
-      text: 'Scratch 默认的小猫角色,初始位置位于舞台中央。此时角色在坐标系中的坐标是?',
-      tag: '坐标方向',
-      options: [
-        { letter: 'A', text: '(0, 0)' },
-        { letter: 'B', text: '(100, 100)' },
-        { letter: 'C', text: '(240, 180)' },
-        { letter: 'D', text: '(-240, -180)' }
-      ],
-      answer: 'A',
-      explain: 'Scratch 舞台中央是坐标原点 (0, 0);x 表示水平方向,y 表示垂直方向,屏幕向右、向上为正方向。'
-    },
-    {
-      id: 's4',
-      text: 'Scratch 中"面向 90 方向"指的是角色面向哪个方向?',
-      tag: '坐标方向',
-      options: [
-        { letter: 'A', text: '向上' },
-        { letter: 'B', text: '向下' },
-        { letter: 'C', text: '向右' },
-        { letter: 'D', text: '向左' }
-      ],
-      answer: 'C',
-      explain: 'Scratch 默认的方向体系中:0° 向上、90° 向右、180°(或 -180°)向下、-90° 向左。这与数学中的角度方向略有不同,要注意区分。'
-    },
-    {
-      id: 's5',
-      text: '下列关于 Scratch 界面区域的描述,哪个是<b>正确</b>的?',
-      tag: '界面操作',
-      options: [
-        { letter: 'A', text: '"舞台区"在屏幕最左边,展示程序运行效果' },
-        { letter: 'B', text: '"积木区"显示了所有可用的程序积木,按类别(运动、外观、声音等)分组' },
-        { letter: 'C', text: '"角色区"用来编写代码逻辑,不支持修改角色属性' },
-        { letter: 'D', text: '"代码区"位于屏幕底部,用于选择背景' }
-      ],
-      answer: 'B',
-      explain: 'Scratch 界面主要分为:舞台区(展示运行效果)、角色区(管理角色与背景)、积木区(按颜色分类的所有积木)和代码区(拼接积木形成脚本)。'
-    }
-  ],
-  multiple: [
-    {
-      id: 'm1',
-      text: '下列哪些是 Scratch 的特点?(多选)',
-      tag: '概念理解',
-      options: [
-        { letter: 'A', text: '图形化编程,通过拖拽积木块来编写程序' },
-        { letter: 'B', text: '由麻省理工学院(MIT)开发' },
-        { letter: 'C', text: '是一款付费软件,需要购买才能使用' },
-        { letter: 'D', text: '支持中文和英文等多种语言界面' }
-      ],
-      answer: ['A', 'B', 'D'],
-      explain: 'Scratch 是 MIT 开发的免费图形化编程工具,支持多语言界面,通过搭积木的方式编程。选项 C 错误,Scratch 完全免费。'
-    },
-    {
-      id: 'm2',
-      text: '下列哪些属于 Scratch 界面的主要区域?(多选)',
-      tag: '界面操作',
-      options: [
-        { letter: 'A', text: '舞台区(展示程序运行效果)' },
-        { letter: 'B', text: '角色区(管理角色与背景)' },
-        { letter: 'C', text: '积木区(分类显示所有可用的积木)' },
-        { letter: 'D', text: '代码区(拖放积木,拼接成脚本)' }
-      ],
-      answer: ['A', 'B', 'C', 'D'],
-      explain: 'Scratch 界面主要包含舞台区、角色区、积木区和代码区四大区域,各司其职,缺一不可。'
-    },
-    {
-      id: 'm3',
-      text: '关于 Scratch 的方向系统,下列说法正确的有?(多选)',
-      tag: '坐标方向',
-      options: [
-        { letter: 'A', text: '0 度方向指向正上方' },
-        { letter: 'B', text: '90 度方向指向正右方' },
-        { letter: 'C', text: '-90 度方向指向正下方' },
-        { letter: 'D', text: '180 度方向指向正下方' }
-      ],
-      answer: ['A', 'B', 'D'],
-      explain: 'Scratch 方向体系:0° 上、90° 右、180°(或 -180°)下、-90° 左。-90° 是向左,不是向下,所以 C 错误。'
-    },
-    {
-      id: 'm4',
-      text: '关于 Scratch 舞台的坐标系,下列说法正确的有?(多选)',
-      tag: '坐标方向',
-      options: [
-        { letter: 'A', text: '舞台中央是坐标原点 (0, 0)' },
-        { letter: 'B', text: '向右移动时,角色 x 坐标会增加' },
-        { letter: 'C', text: '向上移动时,角色 y 坐标会增加' },
-        { letter: 'D', text: '舞台 x 坐标最大值是 480' }
-      ],
-      answer: ['A', 'B', 'C'],
-      explain: 'Scratch 默认舞台宽度 480,范围 -240 到 240,所以 x 最大值是 240 而不是 480,D 错误。'
-    },
-    {
-      id: 'm5',
-      text: '下列哪些积木可以作为脚本的"触发器",让脚本开始执行?(多选)',
-      tag: '界面操作',
-      options: [
-        { letter: 'A', text: '当绿旗被点击' },
-        { letter: 'B', text: '当角色被点击' },
-        { letter: 'C', text: '当按下空格键' },
-        { letter: 'D', text: '移动 10 步' }
-      ],
-      answer: ['A', 'B', 'C'],
-      explain: '"移动 10 步"属于动作类积木,需要被其他积木调用才能执行,本身不能启动脚本。A、B、C 都是事件类积木,可以作为触发器。'
-    }
-  ]
-};
-
+// =================== 学生与主题 ===================
 const STUDENTS = [
   { username: 'yaoqilin', password: '123456', name: '姚琪琳' },
   { username: 'wushixuan', password: '123456', name: '吴诗炫' },
@@ -690,9 +333,50 @@ const STUDENTS = [
   { username: 'wangyi', password: '123456', name: '王毅' },
   { username: 'dongzishuo', password: '123456', name: '董子硕' },
   { username: 'zhengchenxi', password: '123456', name: '郑晨曦' },
-  { username: 'zhengjixin', password: '123456', name: '郑佳欣' }
+  { username: 'zhengjixin', password: '123456', name: '郑佳欣' },
+  { username: 'chengyinuo', password: '123456', name: '成依诺' },
+  { username: 'admin', password: '123456', name: 'admin（测试账号）' }
 ];
+// 教师账号:登录后可实时查看全班答题数据
+// 说明:password 与 altPasswords 中的任意一个都能登录,避免老师记混旧密码
+const TEACHER = { username: 'teacher', password: 'test1234', name: '老师', altPasswords: ['aizqxx2026'] };
+function isTeacherPwd(p) { return p === TEACHER.password || (TEACHER.altPasswords || []).indexOf(p) >= 0; }
 
+// =================== 学生名单管理(教师可自助增删) ===================
+const EXTRA_KEY = 'scratch_extra_students';
+const HIDE_KEY = 'scratch_hidden_students';
+function loadExtra() { try { return JSON.parse(localStorage.getItem(EXTRA_KEY)) || []; } catch (e) { return []; } }
+function saveExtra(arr) { localStorage.setItem(EXTRA_KEY, JSON.stringify(arr)); }
+function loadHide() { try { return JSON.parse(localStorage.getItem(HIDE_KEY)) || []; } catch (e) { return []; } }
+function saveHide(arr) { localStorage.setItem(HIDE_KEY, JSON.stringify(arr)); }
+function getStudents() {
+  const extra = loadExtra();
+  const hide = loadHide();
+  return STUDENTS.concat(extra.filter(e => !STUDENTS.some(s => s.username === e.username)))
+    .filter(s => hide.indexOf(s.username) < 0);
+}
+function addStudent(name, username) {
+  name = (name || '').trim();
+  if (!name) return { ok: false, msg: '请输入学生姓名' };
+  const list = getStudents();
+  if (list.some(s => s.name === name)) return { ok: false, msg: '这个姓名已经在名单里了' };
+  let un = (username || '').trim().replace(/\s+/g, '');
+  if (!un) un = 's' + Date.now().toString(36);
+  if (list.some(s => s.username === un)) return { ok: false, msg: '这个登录账号已存在,换一个' };
+  const arr = loadExtra();
+  arr.push({ username: un, password: '123456', name: name });
+  saveExtra(arr);
+  cloudRosterPost([{ username: un, name: name, password: '123456' }]);
+  return { ok: true, msg: '已添加 ' + name + '（密码 123456）' };
+}
+function removeStudent(username) {
+  saveExtra(loadExtra().filter(s => s.username !== username));
+  // 同时记入隐藏名单,避免下次从云端同步时又被拉回来
+  const h = loadHide();
+  if (h.indexOf(username) < 0) { h.push(username); saveHide(h); }
+  cloudRosterDelete(username);
+}
+function isTeacher() { return getCurrentUser() === 'teacher'; }
 const THEMES = [
   { id: 'orange', name: '温暖橙', primary: '#ff8c42', light: '#ffa85c', dark: '#e6742e', bg: '#fff5ec' },
   { id: 'blue',   name: '科技蓝', primary: '#4f7cac', light: '#6a9ec9', dark: '#3e6592', bg: '#eef3f9' },
@@ -701,657 +385,738 @@ const THEMES = [
   { id: 'pink',   name: '少女粉', primary: '#ec407a', light: '#f06292', dark: '#c2185b', bg: '#fce4ec' },
   { id: 'teal',   name: '海洋青', primary: '#00838f', light: '#26a69a', dark: '#006064', bg: '#e0f7fa' }
 ];
+const LESSON_IDS = Object.keys(window.QUIZ).map(Number).sort((a,b)=>a-b);
+const TYPE_META = { single: { name:'单选题', icon:'📝' }, multiple: { name:'多选题', icon:'☑️' } };
 
-// =================== 存储管理 ===================
-const STORAGE_KEY = 'scratch_quiz_data_v1';
+// =================== 存储 ===================
+const STORAGE_KEY = 'scratch_quiz_data_v2';
 const SESSION_KEY = 'scratch_quiz_session_v1';
-
-function loadAllData() {
-  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
-  catch (e) { return {}; }
-}
+function loadAllData() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch(e){ return {}; } }
 function saveAllData(d) { localStorage.setItem(STORAGE_KEY, JSON.stringify(d)); }
-
 function getStudentData(username) {
   const all = loadAllData();
   if (!all[username]) {
-    const stu = STUDENTS.find(s => s.username === username);
-    all[username] = {
-      name: stu ? stu.name : username,
-      answers: { single: {}, multiple: {} },
-      theme: 'orange'
-    };
+    const stu = getStudents().find(s => s.username === username);
+    all[username] = { name: stu ? stu.name : (username === 'teacher' ? '老师' : username), answers: {}, history: [], theme: 'orange' };
     saveAllData(all);
   }
   return all[username];
 }
-function setStudentData(username, data) {
-  const all = loadAllData();
-  all[username] = data;
-  saveAllData(all);
-}
-
+function setStudentData(username, data) { const all = loadAllData(); all[username] = data; saveAllData(all); }
 function getCurrentUser() { return sessionStorage.getItem(SESSION_KEY); }
-function setCurrentUser(u) {
-  if (u) sessionStorage.setItem(SESSION_KEY, u);
-  else sessionStorage.removeItem(SESSION_KEY);
-}
+function setCurrentUser(u) { if (u) sessionStorage.setItem(SESSION_KEY, u); else sessionStorage.removeItem(SESSION_KEY); }
 
-// =================== 通用工具 ===================
+// =================== 工具 ===================
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 function isCorrect(q, userAns) {
   if (!userAns) return false;
-  const correctArr = Array.isArray(q.answer) ? [...q.answer].sort() : [q.answer];
-  const userArr = Array.isArray(userAns) ? [...userAns].sort() : [userAns];
-  if (correctArr.length !== userArr.length) return false;
-  return correctArr.every((v, i) => v === userArr[i]);
+  const ca = Array.isArray(q.answer) ? [...q.answer].sort() : [q.answer];
+  const ua = Array.isArray(userAns) ? [...userAns].sort() : [userAns];
+  return ca.length === ua.length && ca.every((v,i) => v === ua[i]);
 }
-
-function getScoreText(c, total) {
-  const pct = total === 0 ? 0 : Math.round(c / total * 100);
+function findQuestion(qid) {
+  for (const lid of LESSON_IDS) {
+    for (const type of ['single','multiple']) {
+      const q = window.QUIZ[lid][type].find(q => q.id === qid);
+      if (q) return { q, type, lesson: lid };
+    }
+  }
+  return null;
+}
+function timeAgo(ts) {
+  if (!ts) return '';
+  const diff = Date.now() - ts, min = Math.floor(diff/60000);
+  if (min < 1) return '刚刚';
+  if (min < 60) return min + ' 分钟前';
+  const h = Math.floor(min/60);
+  if (h < 24) return h + ' 小时前';
+  return Math.floor(h/24) + ' 天前';
+}
+function getScoreText(c, t) {
+  const pct = t === 0 ? 0 : Math.round(c/t*100);
   if (pct === 100) return '满分通关!🎉';
   if (pct >= 80) return '优秀,继续保持!';
   if (pct >= 60) return '不错,继续加油!';
   return '不要灰心,熟能生巧!';
 }
-
-function getEncourage(c, total) {
-  if (c === total) return '基础掌握得很扎实,继续保持,期待下节课更精彩的内容!';
-  if (c >= total - 1) return '只错了一道,看看错题解析再过一遍哦~';
-  if (c >= 3) return '建议打开 Scratch 软件,亲手拖一拖相关积木,印象会更深。';
-  return '没关系,刚开始接触编程,多练几次就会熟悉啦!';
+function getEncourage(c, t) {
+  if (c === t) return '这一课掌握得很扎实,去 Scratch 里动手试试吧!';
+  if (c >= t-1) return '只错了一道,看看错题解析再过一遍哦~';
+  if (c >= t/2) return '建议打开 Scratch 软件,亲手拖一拖相关积木,印象会更深。';
+  return '没关系,多练几次就会熟悉啦!错题会自动收进错题本。';
 }
-
-function findQuestion(id) {
-  for (const type of ['single', 'multiple']) {
-    const q = QUESTIONS[type].find(q => q.id === id);
-    if (q) return { q, type };
-  }
-  return null;
-}
-
-function getWrongQuestions() {
-  const username = getCurrentUser();
-  if (!username) return [];
-  const data = getStudentData(username);
-  const result = [];
-  ['single', 'multiple'].forEach(type => {
-    Object.entries(data.answers[type]).forEach(([qid, ans]) => {
-      if (!ans.correct) {
-        result.push({ id: qid, type, lastWrongTime: ans.time });
-      }
-    });
+// 课内统计
+function lessonStats(lid) {
+  const data = getStudentData(getCurrentUser());
+  const res = { single: {att:0, cor:0}, multiple: {att:0, cor:0} };
+  Object.entries(data.answers).forEach(([qid, a]) => {
+    if (a.lesson !== lid) return;
+    const s = res[a.type]; if (!s) return;
+    s.att++; if (a.correct) s.cor++;
   });
-  return result.sort((a, b) => b.lastWrongTime - a.lastWrongTime);
+  res.totalAtt = res.single.att + res.multiple.att;
+  res.totalCor = res.single.cor + res.multiple.cor;
+  return res;
+}
+function overallStats() {
+  const data = getStudentData(getCurrentUser());
+  let att=0, cor=0, wrong=0, lessonsTouched = new Set(), lessonsDone = new Set();
+  Object.entries(data.answers).forEach(([qid, a]) => {
+    att++; if (a.correct) cor++; else wrong++;
+    lessonsTouched.add(a.lesson);
+    const ls = lessonStats(a.lesson);
+    if (ls.single.att >= 5 && ls.multiple.att >= 5) lessonsDone.add(a.lesson);
+  });
+  return { att, cor, wrong, rate: att ? Math.round(cor/att*100) : 0, touched: lessonsTouched.size, done: lessonsDone.size, history: data.history.length };
 }
 
-function timeAgo(ts) {
-  if (!ts) return '';
-  const diff = Date.now() - ts;
-  const min = Math.floor(diff / 60000);
-  if (min < 1) return '刚刚';
-  if (min < 60) return min + ' 分钟前';
-  const h = Math.floor(min / 60);
-  if (h < 24) return h + ' 小时前';
-  const d = Math.floor(h / 24);
-  return d + ' 天前';
+// =================== 主题 ===================
+function applyTheme(themeId) {
+  const t = THEMES.find(x => x.id === themeId) || THEMES[0];
+  const r = document.documentElement.style;
+  r.setProperty('--primary', t.primary); r.setProperty('--primary-light', t.light);
+  r.setProperty('--primary-dark', t.dark); r.setProperty('--primary-bg', t.bg);
 }
 
-// =================== 题目渲染 ===================
-let singleState = { answers: {}, submitted: false };
-let multipleState = { answers: {}, submitted: false };
-
-function renderQuiz(type, containerId, progressId, submitId, resultId) {
-  const quizEl = document.getElementById(containerId);
-  const progressEl = document.getElementById(progressId);
-  const submitBtn = document.getElementById(submitId);
-  const resultEl = document.getElementById(resultId);
-  const questions = QUESTIONS[type];
-  const state = type === 'single' ? singleState : multipleState;
-
-  function renderProgress() {
-    const answered = Object.keys(state.answers).length;
-    const pct = Math.round((answered / questions.length) * 100);
-    progressEl.innerHTML = `
-      <div class="progress-info">
-        <span>${type === 'single' ? '单选题' : '多选题'} · 已作答 ${answered} / ${questions.length}</span>
-        <span>${pct}%</span>
-      </div>
-      <div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div>
-    `;
-    submitBtn.disabled = Object.keys(state.answers).length !== questions.length || state.submitted;
+// =================== 登录 ===================
+const $ = id => document.getElementById(id);
+$('login-btn').addEventListener('click', doLogin);
+$('password').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
+$('username').addEventListener('keydown', e => { if (e.key === 'Enter') $('password').focus(); });
+function doLogin() {
+  const username = $('username').value.trim();
+  const password = $('password').value;
+  const errorEl = $('login-error');
+  // 教师登录入口
+  if (username === TEACHER.username || username === TEACHER.name || username === 'laoshi') {
+    if (!isTeacherPwd(password)) { errorEl.textContent = '教师密码错误'; errorEl.classList.add('show'); return; }
+    errorEl.classList.remove('show');
+    setCurrentUser('teacher');
+    getStudentData('teacher');
+    enterApp();
+    return;
   }
-
-  function renderQuestions() {
-    quizEl.innerHTML = '';
-    questions.forEach((q, idx) => {
-      const card = document.createElement('div');
-      card.className = 'question-card';
-      card.innerHTML = `
-        <div class="q-title">
-          <div class="q-num ${state.submitted ? 'done' : ''}">${idx + 1}</div>
-          <div class="q-text">${q.text}<span class="q-type">${type === 'single' ? '单选' : '多选'}</span><span class="q-tag">${q.tag}</span></div>
-        </div>
-        <div class="options" id="opts-${type}-${idx}"></div>
-        <div class="feedback" id="fb-${type}-${idx}"></div>
-      `;
-      quizEl.appendChild(card);
-
-      const optsEl = card.querySelector('.options');
-      const userAns = state.answers[idx];
-      const userAnsArr = Array.isArray(userAns) ? userAns : (userAns ? [userAns] : []);
-
-      q.options.forEach(opt => {
-        const div = document.createElement('div');
-        div.className = 'option';
-        div.dataset.letter = opt.letter;
-        div.innerHTML = `
-          <span class="opt-letter">${opt.letter}</span>
-          <span class="opt-text">${opt.text}</span>
-          <span class="opt-icon"></span>
-        `;
-
-        if (state.submitted) {
-          div.classList.add('disabled');
-          const correctArr = Array.isArray(q.answer) ? q.answer : [q.answer];
-          if (correctArr.includes(opt.letter)) {
-            div.classList.add('correct-answer');
-            div.querySelector('.opt-icon').textContent = '✓';
-          } else if (userAnsArr.includes(opt.letter)) {
-            div.classList.add('wrong-pick');
-            div.querySelector('.opt-icon').textContent = '✗';
-          }
-        } else {
-          if (userAnsArr.includes(opt.letter)) div.classList.add('selected');
-        }
-
-        div.addEventListener('click', () => pick(idx, opt.letter));
-        optsEl.appendChild(div);
-      });
-
-      if (state.submitted) {
-        const fb = card.querySelector('.feedback');
-        fb.classList.add('show');
-        const isRight = isCorrect(q, state.answers[idx]);
-        fb.classList.add(isRight ? 'correct' : 'wrong');
-        const correctText = Array.isArray(q.answer) ? q.answer.join('、') : q.answer;
-        fb.innerHTML = `<strong>${isRight ? '✓ 回答正确' : '✗ 回答错误,正确答案是 ' + correctText}</strong>${q.explain}`;
-        card.classList.add(isRight ? 'correct' : 'wrong');
-      }
-    });
-    renderProgress();
-  }
-
-  function pick(qIdx, letter) {
-    if (state.submitted) return;
-    if (type === 'single') {
-      state.answers[qIdx] = letter;
-    } else {
-      if (!state.answers[qIdx]) state.answers[qIdx] = [];
-      const arr = state.answers[qIdx];
-      const i = arr.indexOf(letter);
-      if (i >= 0) arr.splice(i, 1);
-      else arr.push(letter);
-      if (arr.length === 0) delete state.answers[qIdx];
-    }
-    renderQuestions();
-  }
-
-  function submit() {
-    state.submitted = true;
-    const username = getCurrentUser();
-    const studentData = getStudentData(username);
-
-    let correct = 0;
-    questions.forEach((q, idx) => {
-      const isRight = isCorrect(q, state.answers[idx]);
-      if (isRight) correct++;
-      studentData.answers[type][q.id] = {
-        answer: state.answers[idx] || null,
-        correct: isRight,
-        time: Date.now()
-      };
-    });
-    setStudentData(username, studentData);
-
-    resultEl.classList.add('show');
-    resultEl.innerHTML = `
-      <div>本次成绩</div>
-      <div class="score-num">${correct} / ${questions.length}</div>
-      <div class="score-text">${getScoreText(correct, questions.length)}</div>
-      <div class="encourage">${getEncourage(correct, questions.length)}</div>
-    `;
-    submitBtn.disabled = true;
-    renderQuestions();
-    resultEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }
-
-  function reset() {
-    state.answers = {};
-    state.submitted = false;
-    resultEl.classList.remove('show');
-    renderQuestions();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  submitBtn.onclick = submit;
-  document.getElementById(`${type}-reset`).onclick = reset;
-  renderQuestions();
+  const student = getStudents().find(s => s.username === username || s.name === username);
+  if (!student) { errorEl.textContent = '姓名不存在,请检查后重试'; errorEl.classList.add('show'); return; }
+  if (student.password !== password) { errorEl.textContent = '密码错误,默认密码为 123456'; errorEl.classList.add('show'); return; }
+  errorEl.classList.remove('show');
+  setCurrentUser(student.username);
+  getStudentData(student.username);
+  enterApp();
 }
-
-// =================== 概览 ===================
-function renderOverview() {
+function enterApp() {
   const username = getCurrentUser();
   if (!username) return;
   const data = getStudentData(username);
-  const all = [...Object.values(data.answers.single), ...Object.values(data.answers.multiple)];
-  const total = all.length;
-  const correct = all.filter(a => a.correct).length;
-  const rate = total > 0 ? Math.round(correct / total * 100) : 0;
+  applyTheme(data.theme || 'orange');
+  $('login-page').style.display = 'none';
+  $('app').style.display = 'block';
+  $('current-user-name').textContent = data.name;
+  $('tab-teacher').style.display = isTeacher() ? '' : 'none';
+  if (isTeacher()) { $('roster-card').style.display = ''; renderRoster(); syncRoster().then(async () => { await renderTeacher(); renderRoster(); }); }
+  switchTab(isTeacher() ? 'teacher' : 'home');
+}
+$('logout-btn').addEventListener('click', () => {
+  stopTeacherTimer();
+  setCurrentUser(null);
+  $('app').style.display = 'none';
+  $('login-page').style.display = 'block';
+  $('password').value = '';
+});
 
-  document.getElementById('overview-grid').innerHTML = `
-    <div class="overview-card">
-      <div class="label">累计答题数</div>
-      <div class="value">${total}</div>
-      <div class="sub">单选 ${Object.keys(data.answers.single).length} · 多选 ${Object.keys(data.answers.multiple).length}</div>
-    </div>
-    <div class="overview-card">
-      <div class="label">正确题数</div>
-      <div class="value" style="color:var(--success)">${correct}</div>
-      <div class="sub">已答 ${total} 题</div>
-    </div>
-    <div class="overview-card">
-      <div class="label">正确率</div>
-      <div class="value">${rate}%</div>
-      <div class="sub">${rate >= 80 ? '状态很棒!' : '继续加油~'}</div>
-    </div>
-    <div class="overview-card">
-      <div class="label">错题待巩固</div>
-      <div class="value" style="color:var(--danger)">${getWrongQuestions().length}</div>
-      <div class="sub">去错题本再练一次</div>
-    </div>
-  `;
+// =================== 导航 ===================
+document.querySelectorAll('#main-tabs .tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => switchTab(btn.dataset.tab));
+});
+function switchTab(tab) {
+  stopTeacherTimer();
+  document.querySelectorAll('#main-tabs .tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+  document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+  $('section-' + tab).classList.add('active');
+  if (tab === 'teacher') { renderRoster(); renderTeacher().then(renderRoster); teacherTimer = setInterval(renderTeacher, 30000); }
+  if (tab === 'home') renderHome();
+  if (tab === 'wrong') renderWrong();
+  if (tab === 'stats') renderStats();
+  if (tab === 'settings') renderSettings();
+  try { window.scrollTo({top:0}); } catch (e) {}
+}
 
-  const wrongItems = getWrongQuestions().slice(0, 5);
-  document.getElementById('recent-wrong-list').innerHTML = wrongItems.length === 0 ?
-    '<div style="color:var(--text-light);font-size:13px;padding:10px 0">暂无错题,继续保持哦~</div>' :
-    wrongItems.map(item => {
-      const found = findQuestion(item.id);
-      return `<div class="wrong-item">
-        <span class="q-id">${item.type === 'single' ? '单选' : '多选'} ${item.id.toUpperCase()}</span>
-        <span class="q-text-preview">${found ? found.q.text.replace(/<[^>]+>/g, '').slice(0, 36) + '...' : ''}</span>
-        <span style="color:var(--text-light);font-size:12px;white-space:nowrap">${timeAgo(item.lastWrongTime)}</span>
-      </div>`;
-    }).join('');
+// =================== 课程总览 ===================
+function renderHome() {
+  const o = overallStats();
+  $('overview-grid').innerHTML = `
+    <div class="overview-card"><div class="label">📚 课程总数</div><div class="value">${LESSON_IDS.length}</div><div class="sub">全部课时</div></div>
+    <div class="overview-card"><div class="label">✅ 已完成课程</div><div class="value">${o.done}<span style="font-size:16px;color:var(--text-light)"> / ${LESSON_IDS.length}</span></div><div class="sub">单选+多选都做完</div></div>
+    <div class="overview-card"><div class="label">🎯 总正确率</div><div class="value">${o.rate}%</div><div class="sub">已答 ${o.att} 题</div></div>
+    <div class="overview-card"><div class="label">📒 待消灭错题</div><div class="value">${o.wrong}</div><div class="sub">错题本可重练</div></div>`;
+  $('lesson-grid').innerHTML = LESSON_IDS.map(lid => {
+    const L = window.QUIZ[lid];
+    const st = lessonStats(lid);
+    const pct = Math.round(st.totalAtt / 10 * 100);
+    let badge;
+    if (st.totalAtt === 0) badge = '<span class="status-badge todo">未开始</span>';
+    else if (st.totalAtt >= 10) badge = `<span class="status-badge done">已完成 · 正确率 ${Math.round(st.totalCor/st.totalAtt*100)}%</span>`;
+    else badge = `<span class="status-badge part">进行中 ${st.totalAtt}/10</span>`;
+    return `<div class="lesson-card" data-lesson="${lid}">
+      <span class="lesson-no">第${lid}课</span>
+      <h3>${esc(L.title.replace(/^第\d+课\s*/, ''))}</h3>
+      <div class="lesson-goal">${esc(L.goal)}</div>
+      <div class="lesson-progress-mini">
+        <div class="mini-track"><div class="mini-fill" style="width:${pct}%"></div></div>
+        <span class="mini-text">${st.totalAtt}/10</span>
+      </div>
+      ${badge}
+    </div>`;
+  }).join('');
+  document.querySelectorAll('.lesson-card').forEach(card => {
+    card.addEventListener('click', () => openLesson(Number(card.dataset.lesson)));
+  });
+}
+
+// =================== 课程详情 ===================
+let currentLesson = null, currentType = null;
+function openLesson(lid) {
+  currentLesson = lid; currentType = null;
+  switchTabKeepSection('lesson');
+  $('quiz-area').innerHTML = '';
+  renderLessonDetail(lid);
+}
+// 详情页不属于顶部tab,单独切换section
+function switchTabKeepSection(sec) {
+  document.querySelectorAll('#main-tabs .tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+  $('section-' + sec).classList.add('active');
+  window.scrollTo({top:0});
+}
+$('back-home-btn').addEventListener('click', () => switchTab('home'));
+
+function renderLessonDetail(lid) {
+  const L = window.QUIZ[lid];
+  const st = lessonStats(lid);
+  const typeStatus = t => {
+    if (st[t].att === 0) return '<span style="color:var(--text-light)">未练习</span>';
+    return `<span style="color:${st[t].cor===st[t].att?'var(--success)':'var(--primary-dark)'};font-weight:600">正确率 ${Math.round(st[t].cor/st[t].att*100)}%</span>`;
+  };
+  $('lesson-detail').innerHTML = `
+    <div class="lesson-detail">
+      <h2>📖 ${esc(L.title)}</h2>
+      <div class="goal"><strong>课程目标:</strong>${esc(L.goal)}</div>
+      <div class="points">${L.points.map(p => `<span class="point-chip">${esc(p)}</span>`).join('')}</div>
+      <div class="quiz-entry-row" style="margin-top:18px">
+        <div class="quiz-entry" data-type="single">
+          <div class="qe-icon">📝</div><h4>单选题</h4>
+          <div class="qe-sub">共 5 题 · 选择最佳答案</div>
+          <div class="qe-status">${typeStatus('single')}</div>
+        </div>
+        <div class="quiz-entry" data-type="multiple">
+          <div class="qe-icon">☑️</div><h4>多选题</h4>
+          <div class="qe-sub">共 5 题 · 选出所有正确项</div>
+          <div class="qe-status">${typeStatus('multiple')}</div>
+        </div>
+      </div>
+    </div>`;
+  document.querySelectorAll('.quiz-entry').forEach(el => {
+    el.addEventListener('click', () => startQuiz(lid, el.dataset.type));
+  });
+}
+
+// =================== 练习 ===================
+function startQuiz(lid, type) {
+  currentType = type;
+  const L = window.QUIZ[lid];
+  const qs = L[type];
+  const qsLabel = type === 'single' ? '单选题' : '多选题(选出所有正确项)';
+  $('quiz-area').innerHTML = `
+    <div class="progress-bar">
+      <div class="progress-info"><span>${esc(L.title)} · ${qsLabel}</span><span class="answered-count">已答 <b>0</b> / ${qs.length}</span></div>
+      <div class="progress-track"><div class="progress-fill"></div></div>
+    </div>
+    <div id="quiz-list"></div>
+    <div class="actions">
+      <button class="btn quiz-submit" disabled>提交答案</button>
+      <button class="btn secondary quiz-reset">重新练习</button>
+    </div>
+    <div class="result-card"></div>`;
+  const list = $('quiz-area').querySelector('#quiz-list');
+  list.innerHTML = qs.map((q, i) => `
+    <div class="question-card" data-qi="${i}">
+      <div class="q-title">
+        <div class="q-num">${i+1}</div>
+        <div class="q-text">${q.text}<span class="q-tag">${esc(q.tag)}</span></div>
+      </div>
+      <div class="options">
+        ${q.options.map(o => `
+          <div class="option" data-letter="${o.letter}">
+            <span class="opt-letter">${o.letter}</span>
+            <span class="opt-text">${o.text}</span>
+            <span class="opt-icon"></span>
+          </div>`).join('')}
+      </div>
+      <div class="feedback"></div>
+    </div>`).join('');
+  const picked = qs.map(() => (type === 'multiple' ? [] : null));
+  function updateProgress() {
+    const n = picked.filter(p => type === 'multiple' ? p.length > 0 : p !== null).length;
+    const bar = $('quiz-area').querySelector('.progress-fill');
+    bar.style.width = (n / qs.length * 100) + '%';
+    $('quiz-area').querySelector('.answered-count').innerHTML = `已答 <b>${n}</b> / ${qs.length}`;
+    $('quiz-area').querySelector('.quiz-submit').disabled = n < qs.length;
+  }
+  list.querySelectorAll('.question-card').forEach(card => {
+    const qi = Number(card.dataset.qi);
+    card.querySelectorAll('.option').forEach(opt => {
+      opt.addEventListener('click', () => {
+        if (card.classList.contains('locked')) return;
+        const letter = opt.dataset.letter;
+        if (type === 'multiple') {
+          const arr = picked[qi];
+          const idx = arr.indexOf(letter);
+          if (idx >= 0) arr.splice(idx, 1); else arr.push(letter);
+          opt.classList.toggle('selected');
+        } else {
+          picked[qi] = letter;
+          card.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+          opt.classList.add('selected');
+        }
+        updateProgress();
+      });
+    });
+  });
+  function grade() {
+    const submitBtn = $('quiz-area').querySelector('.quiz-submit');
+    if (submitBtn.classList.contains('graded')) return;
+    submitBtn.classList.add('graded');
+    submitBtn.disabled = true;
+    submitBtn.textContent = '已提交';
+    let correctCount = 0;
+    const data = getStudentData(getCurrentUser());
+    const username = getCurrentUser();
+    const cloudRows = [];
+    list.querySelectorAll('.question-card').forEach(card => {
+      const qi = Number(card.dataset.qi);
+      const q = qs[qi];
+      const userAns = picked[qi];
+      const ok = isCorrect(q, userAns);
+      if (ok) correctCount++;
+      card.classList.add('locked', ok ? 'correct' : 'wrong');
+      const correctArr = Array.isArray(q.answer) ? q.answer : [q.answer];
+      card.querySelectorAll('.option').forEach(o => {
+        o.classList.add('disabled');
+        if (correctArr.includes(o.dataset.letter)) { o.classList.add('correct-answer'); o.querySelector('.opt-icon').textContent = '✓'; }
+        else if (type === 'single' ? o.dataset.letter === userAns : (Array.isArray(userAns) && userAns.includes(o.dataset.letter))) { o.classList.add('wrong-pick'); o.querySelector('.opt-icon').textContent = '✗'; }
+      });
+      const fb = card.querySelector('.feedback');
+      fb.className = 'feedback show ' + (ok ? 'correct' : 'wrong');
+      fb.innerHTML = `<strong>${ok ? '✅ 回答正确' : '❌ 回答错误'}</strong>${q.explain}`;
+      // 记录
+      data.answers[q.id] = { lesson: lid, type, correct: ok, time: Date.now() };
+      data.history.push({ qid: q.id, correct: ok, time: Date.now() });
+      cloudRows.push({ student: username, name: data.name, lesson: lid, qtype: type, qid: q.id, correct: ok, ts: new Date().toISOString() });
+    });
+    setStudentData(username, data);
+    const rc = $('quiz-area').querySelector('.result-card');
+    rc.className = 'result-card show';
+    rc.innerHTML = `
+      <div style="font-size:15px;opacity:.9">练习完成</div>
+      <div class="score-num">${correctCount} / ${qs.length}</div>
+      <div class="score-text">${getScoreText(correctCount, qs.length)}</div>
+      <div class="encourage">${getEncourage(correctCount, qs.length)}</div>`;
+    try { rc.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); } catch (e) {}
+    // 上传云端;失败时给学生明确提示,避免"老师看不到成绩"却无人知晓
+    cloudPost(cloudRows).then(ok => {
+      if (ok !== false) return;
+      const rcc = $('quiz-area').querySelector('.result-card');
+      if (!rcc) return;
+      const w = document.createElement('div');
+      w.style.cssText = 'margin-top:10px;font-size:12px;opacity:.9;background:rgba(0,0,0,.12);border-radius:8px;padding:7px 10px';
+      w.textContent = '⚠️ 本次成绩没能上传到云端，老师暂时看不到。请检查网络（或让老师重启云数据库）后重做一次即可同步。';
+      rcc.appendChild(w);
+    });
+    renderLessonDetail(lid);
+  }
+  $('quiz-area').querySelector('.quiz-submit').addEventListener('click', grade);
+  $('quiz-area').querySelector('.quiz-reset').addEventListener('click', () => startQuiz(lid, type));
 }
 
 // =================== 错题本 ===================
-function renderWrongBook() {
-  const wrongItems = getWrongQuestions();
-  if (wrongItems.length === 0) {
-    document.getElementById('wrong-content').innerHTML = `
-      <div class="empty-state">
-        <div class="emoji">🎉</div>
-        <div>暂无错题</div>
-        <div class="tip">继续保持,期待你下次练习也一样棒!</div>
-      </div>
-    `;
+function renderWrong() {
+  const data = getStudentData(getCurrentUser());
+  const wrongs = Object.entries(data.answers).filter(([qid, a]) => !a.correct);
+  const box = $('wrong-content');
+  if (wrongs.length === 0) {
+    box.innerHTML = `<div class="empty-state"><div class="emoji">🎉</div><div>太棒了,目前没有错题!</div><div class="tip">做错的题目会自动收进这里,重练答对后自动移出。</div></div>`;
     return;
   }
-
-  const singleWrong = wrongItems.filter(w => w.type === 'single');
-  const multipleWrong = wrongItems.filter(w => w.type === 'multiple');
-
-  document.getElementById('wrong-content').innerHTML = `
-    <div class="wrong-list">
-      <h3 style="margin-bottom:10px">📒 我的错题 (共 ${wrongItems.length} 道)</h3>
-      <div style="font-size:13px;color:var(--text-light);margin-bottom:14px">点击下方按钮针对错题重新练习,巩固薄弱知识点。本次答对的题将从错题本移出。</div>
-      <div style="display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap">
-        ${singleWrong.length > 0 ? `<button class="btn" onclick="startWrongQuiz('single')">🔁 单选错题重练 (${singleWrong.length})</button>` : ''}
-        ${multipleWrong.length > 0 ? `<button class="btn" onclick="startWrongQuiz('multiple')">🔁 多选错题重练 (${multipleWrong.length})</button>` : ''}
-      </div>
-      <h4 style="margin:14px 0 6px;font-size:14px;color:var(--text-light)">错题列表</h4>
-      ${wrongItems.map(item => {
-        const found = findQuestion(item.id);
+  const byLesson = {};
+  wrongs.forEach(([qid, a]) => { (byLesson[a.lesson] = byLesson[a.lesson] || []).push([qid, a]); });
+  box.innerHTML = `<div class="wrong-list"><h3 style="margin-bottom:6px">📒 我的错题(共 ${wrongs.length} 题)</h3>
+    <div style="font-size:12px;color:var(--text-light);margin-bottom:10px">重练答对后,错题会自动移出错题本。点击「去练习」进入对应课程。</div>
+    ${Object.keys(byLesson).map(lid => `
+      <div class="wrong-group-title">${esc(window.QUIZ[lid].title)}(${byLesson[lid].length} 题)</div>
+      ${byLesson[lid].map(([qid, a]) => {
+        const found = findQuestion(qid);
+        if (!found) return '';
         return `<div class="wrong-item">
-          <span class="q-id">${item.type === 'single' ? '单选' : '多选'} ${item.id.toUpperCase()}</span>
-          <span class="q-text-preview">${found ? found.q.text.replace(/<[^>]+>/g, '') : ''}</span>
+          <span class="q-id">${TYPE_META[a.type].name}</span>
+          <span class="q-text-preview">${found.q.text.replace(/<[^>]+>/g,'')}</span>
+          <span style="font-size:12px;color:var(--text-light)">${timeAgo(a.time)}</span>
+          <button class="go-btn" data-lesson="${lid}" data-type="${a.type}">去练习</button>
         </div>`;
-      }).join('')}
-    </div>
-    <div id="wrong-quiz-area"></div>
-  `;
+      }).join('')}`).join('')}
+  </div>`;
+  box.querySelectorAll('.go-btn').forEach(b => {
+    b.addEventListener('click', () => {
+      openLesson(Number(b.dataset.lesson));
+      startQuiz(Number(b.dataset.lesson), b.dataset.type);
+    });
+  });
 }
-
-window.startWrongQuiz = function(type) {
-  const wrongItems = getWrongQuestions().filter(w => w.type === type);
-  if (wrongItems.length === 0) return;
-
-  const allTypeQuestions = QUESTIONS[type];
-  const wrongQuestions = wrongItems.map(w => allTypeQuestions.find(q => q.id === w.id)).filter(Boolean);
-
-  const area = document.getElementById('wrong-quiz-area');
-  area.innerHTML = `
-    <div class="wrong-list" style="margin-top:16px">
-      <h3 style="margin-bottom:14px">🔁 ${type === 'single' ? '单选' : '多选'}错题重练</h3>
-      <div id="wrong-progress" style="margin-bottom:14px"></div>
-      <div id="wrong-quiz-list"></div>
-      <div class="actions">
-        <button class="btn" id="wrong-submit" disabled>提交答案</button>
-        <button class="btn secondary" id="wrong-collapse">收起错题</button>
-      </div>
-      <div class="result-card" id="wrong-result"></div>
-    </div>
-  `;
-
-  let wAns = {};
-  let wSubmitted = false;
-
-  function renderWrongProgress() {
-    const ans = Object.keys(wAns).length;
-    const pct = Math.round(ans / wrongQuestions.length * 100);
-    document.getElementById('wrong-progress').innerHTML = `
-      <div class="progress-bar">
-        <div class="progress-info">
-          <span>错题重练 · 已作答 ${ans} / ${wrongQuestions.length}</span>
-          <span>${pct}%</span>
-        </div>
-        <div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div>
-      </div>
-    `;
-    document.getElementById('wrong-submit').disabled = ans !== wrongQuestions.length || wSubmitted;
-  }
-
-  function renderWrongQs() {
-    const list = document.getElementById('wrong-quiz-list');
-    list.innerHTML = '';
-    wrongQuestions.forEach((q, idx) => {
-      const card = document.createElement('div');
-      card.className = 'question-card';
-      card.innerHTML = `
-        <div class="q-title">
-          <div class="q-num ${wSubmitted ? 'done' : ''}">${idx + 1}</div>
-          <div class="q-text">${q.text}<span class="q-tag">${q.tag}</span></div>
-        </div>
-        <div class="options" id="wop-${idx}"></div>
-        <div class="feedback" id="wfb-${idx}"></div>
-      `;
-      list.appendChild(card);
-
-      const optsEl = card.querySelector('.options');
-      const userAns = wAns[idx];
-      const userAnsArr = Array.isArray(userAns) ? userAns : (userAns ? [userAns] : []);
-
-      q.options.forEach(opt => {
-        const div = document.createElement('div');
-        div.className = 'option';
-        div.innerHTML = `<span class="opt-letter">${opt.letter}</span><span class="opt-text">${opt.text}</span><span class="opt-icon"></span>`;
-        if (wSubmitted) {
-          div.classList.add('disabled');
-          const correctArr = Array.isArray(q.answer) ? q.answer : [q.answer];
-          if (correctArr.includes(opt.letter)) {
-            div.classList.add('correct-answer');
-            div.querySelector('.opt-icon').textContent = '✓';
-          } else if (userAnsArr.includes(opt.letter)) {
-            div.classList.add('wrong-pick');
-            div.querySelector('.opt-icon').textContent = '✗';
-          }
-        } else {
-          if (userAnsArr.includes(opt.letter)) div.classList.add('selected');
-        }
-        div.addEventListener('click', () => {
-          if (wSubmitted) return;
-          if (type === 'single') wAns[idx] = opt.letter;
-          else {
-            if (!wAns[idx]) wAns[idx] = [];
-            const i = wAns[idx].indexOf(opt.letter);
-            if (i >= 0) wAns[idx].splice(i, 1);
-            else wAns[idx].push(opt.letter);
-            if (wAns[idx].length === 0) delete wAns[idx];
-          }
-          renderWrongQs();
-        });
-        optsEl.appendChild(div);
-      });
-
-      if (wSubmitted) {
-        const fb = card.querySelector('.feedback');
-        fb.classList.add('show');
-        const isRight = isCorrect(q, wAns[idx]);
-        fb.classList.add(isRight ? 'correct' : 'wrong');
-        const correctText = Array.isArray(q.answer) ? q.answer.join('、') : q.answer;
-        fb.innerHTML = `<strong>${isRight ? '✓ 回答正确' : '✗ 回答错误,正确答案是 ' + correctText}</strong>${q.explain}`;
-        card.classList.add(isRight ? 'correct' : 'wrong');
-      }
-    });
-    renderWrongProgress();
-  }
-
-  document.getElementById('wrong-submit').onclick = () => {
-    wSubmitted = true;
-    let correct = 0;
-    const username = getCurrentUser();
-    const studentData = getStudentData(username);
-    wrongQuestions.forEach((q, idx) => {
-      const isRight = isCorrect(q, wAns[idx]);
-      if (isRight) correct++;
-      studentData.answers[type][q.id] = {
-        answer: wAns[idx] || null,
-        correct: isRight,
-        time: Date.now()
-      };
-    });
-    setStudentData(username, studentData);
-
-    const resultEl = document.getElementById('wrong-result');
-    resultEl.classList.add('show');
-    resultEl.innerHTML = `
-      <div>错题重练成绩</div>
-      <div class="score-num">${correct} / ${wrongQuestions.length}</div>
-      <div class="score-text">${getScoreText(correct, wrongQuestions.length)}</div>
-      <div class="encourage">${correct === wrongQuestions.length ? '太棒了!错题全部掌握,可以移出错题本了 🎉' : '还需要继续巩固,再来一次吧!'}</div>
-    `;
-    document.getElementById('wrong-submit').disabled = true;
-    renderWrongQs();
-    resultEl.scrollIntoView({ behavior: 'smooth' });
-    setTimeout(() => { renderWrongBook(); }, 800);
-  };
-
-  document.getElementById('wrong-collapse').onclick = () => {
-    area.innerHTML = '';
-  };
-
-  renderWrongQs();
-};
 
 // =================== 统计 ===================
 function renderStats() {
-  const username = getCurrentUser();
-  if (!username) return;
-  const data = getStudentData(username);
-
-  const types = ['single', 'multiple'];
-  const stats = types.map(type => {
-    const ans = data.answers[type];
-    const total = Object.keys(ans).length;
-    const correct = Object.values(ans).filter(a => a.correct).length;
-    return { type, total, correct, wrong: total - correct, rate: total > 0 ? Math.round(correct / total * 100) : 0 };
-  });
-
-  const totalAll = stats.reduce((s, x) => s + x.total, 0);
-  const correctAll = stats.reduce((s, x) => s + x.correct, 0);
-  const rateAll = totalAll > 0 ? Math.round(correctAll / totalAll * 100) : 0;
-
-  document.getElementById('stats-grid').innerHTML = `
-    <div class="stat-card">
-      <div class="label">总答题数</div>
-      <div class="value" style="color:var(--primary)">${totalAll}</div>
-      <div class="sub">单选 ${stats[0].total} · 多选 ${stats[1].total}</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">总正确数</div>
-      <div class="value" style="color:var(--success)">${correctAll}</div>
-      <div class="sub">已答 ${totalAll} 题</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">总正确率</div>
-      <div class="value">${rateAll}%</div>
-      <div class="sub">${rateAll >= 80 ? '表现优秀' : '继续加油'}</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">单选题正确率</div>
-      <div class="value">${stats[0].rate}%</div>
-      <div class="sub">${stats[0].correct}/${stats[0].total}</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">多选题正确率</div>
-      <div class="value">${stats[1].rate}%</div>
-      <div class="sub">${stats[1].correct}/${stats[1].total}</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">待巩固错题</div>
-      <div class="value" style="color:var(--danger)">${getWrongQuestions().length}</div>
-      <div class="sub">去错题本继续练习</div>
-    </div>
-  `;
-
-  const wrongItems = getWrongQuestions();
-  document.getElementById('wrong-detail').innerHTML = wrongItems.length === 0 ?
-    '<div style="color:var(--text-light);font-size:13px;padding:10px 0">暂无错题,继续保持哦~</div>' :
-    wrongItems.map(item => {
-      const found = findQuestion(item.id);
-      return `<div class="wrong-item">
-        <span class="q-id">${item.type === 'single' ? '单选' : '多选'} ${item.id.toUpperCase()}</span>
-        <span class="q-text-preview">${found ? found.q.text.replace(/<[^>]+>/g, '').slice(0, 50) + '...' : ''}</span>
-        <span style="color:var(--text-light);font-size:12px;white-space:nowrap">${timeAgo(item.lastWrongTime)}</span>
-      </div>`;
-    }).join('');
+  const o = overallStats();
+  $('stats-grid').innerHTML = `
+    <div class="stat-card"><div class="label">📝 累计答题</div><div class="value">${o.att}</div><div class="sub">共练习 ${o.history} 次</div></div>
+    <div class="stat-card"><div class="label">🎯 总正确率</div><div class="value" style="color:${o.rate>=60?'var(--success)':'var(--danger)'}">${o.rate}%</div><div class="sub">答对 ${o.att - o.wrong} 题</div></div>
+    <div class="stat-card"><div class="label">✅ 课程进度</div><div class="value" style="color:var(--primary)">${o.done}/${LESSON_IDS.length}</div><div class="sub">已练 ${o.touched} 课</div></div>
+    <div class="stat-card"><div class="label">📒 错题数量</div><div class="value" style="color:${o.wrong?'var(--danger)':'var(--success)'}">${o.wrong}</div><div class="sub">错题本可重练</div></div>`;
+  $('stats-table').innerHTML = `
+    <tr><th>课程</th><th>单选正确率</th><th>多选正确率</th><th>综合</th></tr>
+    ${LESSON_IDS.map(lid => {
+      const st = lessonStats(lid);
+      const rate = (a, b) => b === 0 ? '—' : `<span class="rate-bar"><i style="width:${Math.round(a/b*100)}%"></i></span>${Math.round(a/b*100)}%`;
+      return `<tr><td>${esc(window.QUIZ[lid].title)}</td><td>${rate(st.single.cor, st.single.att)}</td><td>${rate(st.multiple.cor, st.multiple.att)}</td><td>${st.totalAtt === 0 ? '<span style="color:var(--text-light)">未开始</span>' : rate(st.totalCor, st.totalAtt)}</td></tr>`;
+    }).join('')}`;
 }
+
+// =================== 云同步(Supabase) ===================
+const CLOUD = window.CLOUD || { url: '', key: '' };
+function cloudReady() { return !!(CLOUD.url && CLOUD.key); }
+// 返回:true=上传成功 / false=上传失败 / null=未配置云同步(不算失败,不提示)
+async function cloudPost(rows) {
+  if (!cloudReady() || !rows.length) return null;
+  try {
+    const r = await fetch(CLOUD.url + '/rest/v1/answers', {
+      method: 'POST',
+      headers: { 'apikey': CLOUD.key, 'Authorization': 'Bearer ' + CLOUD.key, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+      body: JSON.stringify(rows)
+    });
+    return r.ok;
+  } catch (e) { /* 网络异常时静默失败,本地记录仍保留 */ return false; }
+}
+async function cloudGet() {
+  const r = await fetch(CLOUD.url + '/rest/v1/answers?select=student,name,lesson,qtype,correct,ts&order=ts.desc&limit=2000', {
+    headers: { 'apikey': CLOUD.key, 'Authorization': 'Bearer ' + CLOUD.key }
+  });
+  if (!r.ok) throw new Error('HTTP ' + r.status);
+  return r.json();
+}
+
+
+async function cloudRosterGet() {
+  const r = await fetch(CLOUD.url + '/rest/v1/students?select=username,name,password', {
+    headers: { 'apikey': CLOUD.key, 'Authorization': 'Bearer ' + CLOUD.key }
+  });
+  if (!r.ok) throw new Error('HTTP ' + r.status);
+  return r.json();
+}
+async function cloudRosterPost(rows) {
+  if (!cloudReady() || !rows.length) return;
+  try {
+    await fetch(CLOUD.url + '/rest/v1/students', {
+      method: 'POST',
+      headers: { 'apikey': CLOUD.key, 'Authorization': 'Bearer ' + CLOUD.key, 'Content-Type': 'application/json', 'Prefer': 'resolution=merge-duplicates,return=minimal' },
+      body: JSON.stringify(rows)
+    });
+  } catch (e) { /* 云端不可用时仅保存在本机 */ }
+}
+async function cloudRosterDelete(username) {
+  if (!cloudReady()) return;
+  try {
+    await fetch(CLOUD.url + '/rest/v1/students?username=eq.' + encodeURIComponent(username), {
+      method: 'DELETE',
+      headers: { 'apikey': CLOUD.key, 'Authorization': 'Bearer ' + CLOUD.key }
+    });
+  } catch (e) { }
+}
+async function syncRoster() {
+  if (!cloudReady()) return;
+  try {
+    const rows = await cloudRosterGet();
+    const extra = loadExtra();
+    const hide = loadHide();
+    let changed = false;
+    (rows || []).forEach(r => {
+      if (!r || !r.username) return;
+      if (hide.indexOf(r.username) >= 0) return;
+      if (STUDENTS.some(s => s.username === r.username)) return;
+      if (extra.some(e => e.username === r.username)) return;
+      extra.push({ username: r.username, name: r.name || r.username, password: r.password || '123456' });
+      changed = true;
+    });
+    if (changed) saveExtra(extra);
+  } catch (e) { }
+}
+
+// =================== 教师后台 ===================
+let teacherTimer = null;
+function stopTeacherTimer() { if (teacherTimer) { clearInterval(teacherTimer); teacherTimer = null; } }
+function fmtAgo(iso) {
+  const t = new Date(iso).getTime();
+  if (isNaN(t)) return '';
+  return timeAgo(t);
+}
+function localRows() {
+  const all = loadAllData();
+  const rows = [];
+  getStudents().forEach(su => {
+    const d = all[su.username];
+    if (!d || !d.answers) return;
+    Object.keys(d.answers).forEach(qid => {
+      const a = d.answers[qid];
+      if (!a || a.lesson == null) return;
+      rows.push({ student: su.username, name: d.name || su.name, lesson: a.lesson, qtype: a.type, qid: qid, correct: !!a.correct, ts: new Date(a.time || Date.now()).toISOString() });
+    });
+  });
+  return rows;
+}
+function mergeRows(cloudR, localR) {
+  const seen = {}, out = [];
+  cloudR.concat(localR).forEach(r => {
+    const k = (r.student || '') + '|' + (r.qid || '') + '|' + String(r.ts).slice(0, 16);
+    if (seen[k]) return;
+    seen[k] = 1; out.push(r);
+  });
+  return out.sort((x, y) => new Date(y.ts) - new Date(x.ts));
+}
+async function renderTeacher() {
+  const st = $('t-student-table'), lt = $('t-lesson-table'), act = $('t-activity');
+  const local = localRows();
+  let rows = local, cloudOK = false, cloudMsg = '';
+  if (cloudReady()) {
+    $('t-updated').textContent = '加载中...';
+    try { rows = mergeRows(await cloudGet(), local); cloudOK = true; }
+    catch (e) { cloudMsg = esc(e.message); rows = local; }
+  }
+  window.__rowsCache = rows;
+  $('t-updated').textContent = (cloudOK ? '☁️ 云端 + 本机' : '💻 仅本机数据（云未连通，只看得到这台电脑的记录）') + ' · 更新于 ' + new Date().toLocaleTimeString('zh-CN') + ' · 每 30 秒自动刷新';
+  const today = new Date().toDateString();
+  let todayCount = 0;
+  const byStudent = {};
+  rows.forEach(r => {
+    const s = byStudent[r.student] = byStudent[r.student] || { name: r.name || r.student, att: 0, cor: 0, lessons: new Set(), last: r.ts };
+    s.att++; if (r.correct) s.cor++;
+    s.lessons.add(r.lesson);
+    if (r.ts > s.last) s.last = r.ts;
+    if (new Date(r.ts).toDateString() === today) todayCount++;
+  });
+  const students = Object.values(byStudent);
+  const att = students.reduce((x, s) => x + s.att, 0), cor = students.reduce((x, s) => x + s.cor, 0);
+  $('t-stats-grid').innerHTML = `
+    <div class="stat-card"><div class="label">👥 已开始练习</div><div class="value">${students.length}<span style="font-size:15px;color:var(--text-light)"> / ${getStudents().length}</span></div><div class="sub">名学生</div></div>
+    <div class="stat-card"><div class="label">📝 全班累计答题</div><div class="value">${att}</div><div class="sub">题次</div></div>
+    <div class="stat-card"><div class="label">🎯 全班正确率</div><div class="value" style="color:${att && cor/att>=0.6?'var(--success)':'var(--danger)'}">${att ? Math.round(cor/att*100) : 0}%</div><div class="sub">答对 ${cor} 题</div></div>
+    <div class="stat-card"><div class="label">🔥 今日答题</div><div class="value">${todayCount}</div><div class="sub">题次</div></div>`;
+  st.innerHTML = `<tr><th>学生</th><th>答题数</th><th>答对</th><th>正确率</th><th>已练课程</th><th>最后活跃</th></tr>
+    ${getStudents().slice().sort((a, b) => (byStudent[b.username] ? 1 : 0) - (byStudent[a.username] ? 1 : 0)).map(su => {
+      const s = byStudent[su.username];
+      if (!s) return `<tr style="opacity:.55"><td>${su.name}</td><td colspan="5" style="color:var(--text-light)">还没有开始练习</td></tr>`;
+      const rate = Math.round(s.cor / s.att * 100);
+      return `<tr><td>${su.name}</td><td>${s.att}</td><td>${s.cor}</td><td><span class="rate-bar"><i style="width:${rate}%"></i></span>${rate}%</td><td>${s.lessons.size} / ${LESSON_IDS.length}</td><td>${fmtAgo(s.last)}</td></tr>`;
+    }).join('')}`;
+  lt.innerHTML = `<tr><th>课程</th><th>答题人次</th><th>答对人次</th><th>正确率</th></tr>
+    ${LESSON_IDS.map(lid => {
+      const rs = rows.filter(r => r.lesson === lid);
+      const c = rs.filter(r => r.correct).length;
+      const rate = rs.length ? Math.round(c / rs.length * 100) : 0;
+      return `<tr><td>${esc(window.QUIZ[lid].title)}</td><td>${rs.length}</td><td>${c}</td><td>${rs.length ? `<span class="rate-bar"><i style="width:${rate}%"></i></span>${rate}%` : '<span style="color:var(--text-light)">暂无数据</span>'}</td></tr>`;
+    }).join('')}`;
+  if (!rows.length) {
+    const tip = cloudOK
+      ? '还没有答题记录。<br><span style="font-size:12px">学生提交练习后这里会自动出现数据。</span>'
+      : (cloudMsg
+        ? '☁️ 云数据库暂时连不上(' + cloudMsg + ')<br><span style="font-size:12px">不影响学生做题,本机记录仍在;联网恢复后会自动并入统计。</span>'
+        : '还没有答题记录。<br><span style="font-size:12px">学生在这台电脑登录做题后,数据会自动汇总到这里。</span>');
+    act.innerHTML = `<tr><td colspan="5" style="text-align:center;padding:34px;color:var(--text-light)">${tip}</td></tr>`;
+  } else {
+    act.innerHTML = `<tr><th>时间</th><th>学生</th><th>课程</th><th>题型</th><th>结果</th></tr>
+      ${rows.slice(0, 15).map(r => `<tr><td>${fmtAgo(r.ts)}</td><td>${esc(r.name || r.student)}</td><td>${esc(window.QUIZ[r.lesson] ? window.QUIZ[r.lesson].title : '第' + r.lesson + '课')}</td><td>${r.qtype === 'single' ? '单选' : '多选'}</td><td>${r.correct ? '<span style="color:var(--success)">✓ 答对</span>' : '<span style="color:var(--danger)">✗ 答错</span>'}</td></tr>`).join('')}`;
+  }
+  autoDiag(cloudOK, cloudMsg, rows);
+}
+
+// 教师后台自动体检:不用点按钮也能一眼看出"为什么看不到学生数据"
+function autoDiag(cloudOK, cloudMsg, rows) {
+  const box = $('diag-box');
+  if (!box) return;
+  box.style.display = '';
+  if (!cloudReady()) {
+    box.innerHTML = '⚠️ <b>未配置云同步</b>：config.js 里没有云数据库地址。当前只能看到<b>这台电脑</b>上的记录，学生在手机/家里电脑做题的成绩看不到。';
+    return;
+  }
+  if (!cloudOK) {
+    box.innerHTML = '❌ <b>云数据库连不上</b>：' + esc(cloudMsg || '未知原因') +
+      '<br>最常见的原因：Supabase 免费项目 <b>连续 7 天没人用会自动暂停</b>。请到 supabase.com 后台 → 项目 → 点 <b>Resume project</b>，等 1~2 分钟再刷新本页。' +
+      '<br><span style="color:var(--text-light)">学生做题不受影响，成绩暂存在各自设备上；云恢复后重新做一次即可上传。</span>';
+    return;
+  }
+  if (!rows.length) {
+    box.innerHTML = '☁️ 云数据库<b>已连通</b>，但里面<b>还没有任何答题记录</b>。' +
+      '<br>说明学生提交练习时没有上传成功，请确认：学生在<b>联网状态下</b>做题并提交；提交后若页面出现「⚠️ 成绩没能上传」提示，说明当时网络不通。' +
+      '<br><span style="color:var(--text-light)">点右侧「🔍 云连接诊断」可查看云端详细条数。</span>';
+    return;
+  }
+  const names = {};
+  rows.slice(0, 200).forEach(r => { const n = r.name || r.student; if (n) names[n] = 1; });
+  box.innerHTML = '✅ 云同步正常：已载入 <b>' + rows.length + '</b> 条答题记录，来自 ' + Object.keys(names).length + ' 位同学（' + Object.keys(names).slice(0, 10).map(esc).join('、') + '）。';
+}
+$('t-refresh').addEventListener('click', () => renderTeacher());
+
+function renderRoster() {
+  const t = $('roster-table'); if (!t) return;
+  const extraSet = {}; loadExtra().forEach(e => { extraSet[e.username] = 1; });
+  const rows = window.__rowsCache || localRows();
+  const cnt = {};
+  rows.forEach(r => { if (r.student) cnt[r.student] = (cnt[r.student] || 0) + 1; });
+  const list = getStudents().slice().sort((a, b) => (cnt[b.username] || 0) - (cnt[a.username] || 0));
+  t.innerHTML = '<tr><th>姓名</th><th>登录账号</th><th>答题数</th><th>来源</th><th>操作</th></tr>' + list.map(s => {
+    const isExtra = !!extraSet[s.username];
+    const c = cnt[s.username] || 0;
+    return `<tr><td>${esc(s.name)}</td><td style="color:var(--text-light);font-size:12px">${esc(s.username)}</td>` +
+      `<td>${c ? '<strong>' + c + '</strong> 题' : '<span style="color:var(--text-light)">0 题</span>'}</td>` +
+      `<td>${isExtra ? '<span style="color:var(--success)">教师新增</span>' : '<span style="color:var(--text-light)">内置</span>'}</td>` +
+      `<td><button class="btn secondary" data-del="${esc(s.username)}" style="padding:4px 12px;font-size:12px">删除</button></td></tr>`;
+  }).join('') + `<tr><td colspan="5" style="color:var(--text-light);font-size:12px">共 ${list.length} 人 · 答题数为 0、又不认识的账号，点上面「🧹 清理无效账号」可一次性清掉（内置名单不会被自动清理，需手动删除）</td></tr>`;
+  t.querySelectorAll('[data-del]').forEach(b => {
+    b.addEventListener('click', async () => {
+      if (!confirm('确定删除账号「' + b.dataset.del + '」吗？删掉后该账号无法登录。')) return;
+      removeStudent(b.dataset.del);
+      renderRoster(); await renderTeacher(); renderRoster();
+    });
+  });
+}
+$('roster-add').addEventListener('click', () => {
+  const res = addStudent($('roster-name').value, $('roster-username').value);
+  const m = $('roster-msg');
+  m.style.color = res.ok ? 'var(--success)' : 'var(--danger)';
+  m.textContent = res.msg;
+  if (res.ok) { $('roster-name').value = ''; $('roster-username').value = ''; renderRoster(); renderTeacher(); }
+});
+
+// ---------- 云连接诊断 ----------
+async function cloudDiag() {
+  const box = $('diag-box');
+  if (!box) return;
+  box.style.display = '';
+  if (!cloudReady()) { box.innerHTML = '⚠️ 未配置云同步（config.js 里没有地址或密钥）。当前只能看到<b>这台电脑上</b>的答题记录。'; return; }
+  box.innerHTML = '🔄 正在连接云数据库，请稍候…';
+  const H = { 'apikey': CLOUD.key, 'Authorization': 'Bearer ' + CLOUD.key, 'Range-Unit': 'items', 'Prefer': 'count=exact' };
+  let ansCount = null, stuCount = null, recent = [], err = '';
+  try {
+    const r1 = await fetch(CLOUD.url + '/rest/v1/answers?select=student', { method: 'HEAD', headers: H });
+    const cr = r1.headers.get('content-range');
+    if (cr && cr.indexOf('/') > 0) ansCount = cr.split('/')[1];
+    if (!r1.ok) err += '答题表 HTTP ' + r1.status + '；';
+  } catch (e) { err += '答题表 ' + esc(e.message) + '；'; }
+  try {
+    const r2 = await fetch(CLOUD.url + '/rest/v1/students?select=username', { method: 'HEAD', headers: H });
+    const cr2 = r2.headers.get('content-range');
+    if (cr2 && cr2.indexOf('/') > 0) stuCount = cr2.split('/')[1];
+    if (!r2.ok) err += '名单表 HTTP ' + r2.status + '；';
+  } catch (e) { err += '名单表 ' + esc(e.message) + '；'; }
+  try { recent = await cloudGet(); } catch (e) { }
+  let html;
+  if (err) {
+    html = '❌ <b>云数据库连不上</b>：' + err + '<br>常见原因：Supabase 免费项目连续 7 天未使用会自动暂停，去 supabase.com 后台点 <b>Resume project</b> 恢复即可。';
+  } else {
+    const names = {};
+    (recent || []).slice(0, 8).forEach(r => { names[r.name || r.student] = (names[r.name || r.student] || 0) + 1; });
+    html = '✅ <b>云数据库已连通</b><br>' +
+      '📝 云端答题记录：<b>' + (ansCount === null ? '未知' : ansCount) + '</b> 条' +
+      (recent && recent.length ? '（最近 ' + recent.length + ' 条已载入）' : '') + '<br>' +
+      '👥 云端学生名单：<b>' + (stuCount === null ? '未知' : stuCount) + '</b> 人<br>' +
+      (Object.keys(names).length ? '🕐 最近答题的同学：' + Object.keys(names).map(n => esc(n)).join('、') : '⚠️ 云端还没有任何答题记录 —— 说明学生做题后<b>没有成功上传</b>，请确认学生是在联网状态下提交练习。');
+  }
+  const list = getStudents();
+  const active = {}; (recent || []).forEach(r => { if (r.student) active[r.student] = 1; });
+  const dead = list.filter(s => !active[s.username] && !STUDENTS.some(b => b.username === s.username)).length;
+  if (dead) html += '<br>🧹 名单里有 <b>' + dead + '</b> 个从未答题的账号，可点「清理无效账号」清掉。';
+  box.innerHTML = html;
+}
+$('cloud-diag').addEventListener('click', cloudDiag);
+
+// ---------- 一键清理无效账号 ----------
+async function cleanupRoster() {
+  const m = $('roster-msg');
+  if (!confirm('将删除所有【从未答过题、且不是内置名单】的账号，并清空本机里已不在名单上的残留数据。\n\n内置的真实学生不会被删。确定继续吗？')) return;
+  m.style.color = 'var(--text-light)'; m.textContent = '正在清理…';
+  let cloud = [];
+  if (cloudReady()) { try { cloud = await cloudGet(); } catch (e) { } }
+  const rows = mergeRows(cloud, localRows());
+  window.__rowsCache = rows;
+  const active = {};
+  rows.forEach(r => { if (r.student) active[r.student] = 1; });
+  const before = getStudents();
+  const dead = before.filter(s => !active[s.username] && !STUDENTS.some(b => b.username === s.username));
+  const deadNames = dead.map(s => s.username);
+  if (deadNames.length) {
+    saveExtra(loadExtra().filter(s => deadNames.indexOf(s.username) < 0));
+    const h = loadHide();
+    deadNames.forEach(u => { if (h.indexOf(u) < 0) h.push(u); });
+    saveHide(h);
+    deadNames.forEach(u => cloudRosterDelete(u));
+  }
+  // 清空本机里已不在名单上的残留数据(以前登录过的旧账号)
+  const keepU = {}; getStudents().forEach(s => { keepU[s.username] = 1; }); keepU['teacher'] = 1;
+  const all = loadAllData(); const keep = {};
+  Object.keys(all).forEach(u => { if (keepU[u]) keep[u] = all[u]; });
+  const removedData = Object.keys(all).length - Object.keys(keep).length;
+  saveAllData(keep);
+  m.style.color = 'var(--success)';
+  m.textContent = '已清理 ' + deadNames.length + ' 个无效账号' + (removedData > 0 ? '，并清除 ' + removedData + ' 份本机残留数据' : '') + '。当前名单 ' + getStudents().length + ' 人。';
+  renderRoster(); await renderTeacher(); renderRoster();
+}
+$('roster-clean').addEventListener('click', cleanupRoster);
+
 
 // =================== 设置 ===================
 function renderSettings() {
-  const username = getCurrentUser();
-  const data = getStudentData(username);
-
-  document.getElementById('theme-grid').innerHTML = THEMES.map(t => `
-    <div class="theme-card ${t.id === data.theme ? 'active' : ''}" data-theme="${t.id}">
-      <div class="theme-swatch" style="background:linear-gradient(135deg, ${t.primary}, ${t.light})"></div>
+  const data = getStudentData(getCurrentUser());
+  $('theme-grid').innerHTML = THEMES.map(t => `
+    <div class="theme-card ${data.theme === t.id ? 'active' : ''}" data-theme="${t.id}">
+      <div class="theme-swatch" style="background:linear-gradient(135deg,${t.primary},${t.light})"></div>
       <div class="theme-name">${t.name}</div>
-    </div>
-  `).join('');
-
+    </div>`).join('');
   document.querySelectorAll('.theme-card').forEach(card => {
     card.addEventListener('click', () => {
-      const themeId = card.dataset.theme;
-      data.theme = themeId;
-      setStudentData(username, data);
-      applyTheme(themeId);
+      const username = getCurrentUser();
+      const d = getStudentData(username);
+      d.theme = card.dataset.theme;
+      setStudentData(username, d);
+      applyTheme(d.theme);
       renderSettings();
     });
   });
-
-  document.getElementById('student-list').innerHTML = STUDENTS.map(s => `
-    <div class="student-chip">${s.name}</div>
-  `).join('');
-}
-
-function applyTheme(themeId) {
-  const theme = THEMES.find(t => t.id === themeId) || THEMES[0];
-  const root = document.documentElement.style;
-  root.setProperty('--primary', theme.primary);
-  root.setProperty('--primary-light', theme.light);
-  root.setProperty('--primary-dark', theme.dark);
-  root.setProperty('--primary-bg', theme.bg);
-}
-
-// =================== 路由 ===================
-function showSection(tabName) {
-  document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
-  document.getElementById('section-' + tabName).classList.add('active');
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.querySelector(`.tab-btn[data-tab="${tabName}"]`).classList.add('active');
-  if (tabName === 'home') renderOverview();
-  else if (tabName === 'stats') renderStats();
-  else if (tabName === 'wrong') renderWrongBook();
-  else if (tabName === 'settings') renderSettings();
-}
-
-document.querySelectorAll('.tab-btn').forEach(btn => {
-  btn.addEventListener('click', () => showSection(btn.dataset.tab));
-});
-
-// =================== 登录 ===================
-function tryLogin() {
-  const username = document.getElementById('username').value.trim();
-  const password = document.getElementById('password').value;
-  const errorEl = document.getElementById('login-error');
-
-  const student = STUDENTS.find(s => s.username === username || s.name === username);
-  if (!student) {
-    errorEl.textContent = '姓名不存在,请输入名单中的中文姓名';
-    errorEl.classList.add('show');
-    return;
+  $('student-list').innerHTML = getStudents().map(s => `<div class="student-chip">👤 ${s.name}</div>`).join('');
+  $('cloud-card').style.display = isTeacher() ? '' : 'none';
+  if (isTeacher()) {
+    $('cloud-status').innerHTML = cloudReady()
+      ? '✅ 云同步已配置:学生每次提交答题都会实时上传,在「👨‍🏫 教师后台」标签页查看全班数据(每 30 秒自动刷新)。'
+      : '⚠️ 云同步尚未配置,当前为本机模式:学生在这台电脑做题时,「教师后台」仍能看到全班数据;若想让学生回家用手机/家里电脑也能同步,请按部署教程注册 Supabase,把地址和密钥填进 config.js 后重新上传网站。';
   }
-  if (student.password !== password) {
-    errorEl.textContent = '密码错误,默认密码为 123456';
-    errorEl.classList.add('show');
-    return;
-  }
-
-  errorEl.classList.remove('show');
-  setCurrentUser(student.username);
-  enterApp();
 }
-
-function enterApp() {
+$('clear-data-btn').addEventListener('click', () => {
+  if (!confirm('确定要清除自己的所有答题记录吗?此操作不可恢复。')) return;
   const username = getCurrentUser();
-  const student = STUDENTS.find(s => s.username === username);
-  document.getElementById('login-page').style.display = 'none';
-  document.getElementById('app').style.display = 'block';
-  document.getElementById('current-user-name').textContent = student.name;
-
-  const data = getStudentData(username);
-  applyTheme(data.theme);
-
-  singleState = { answers: {}, submitted: false };
-  multipleState = { answers: {}, submitted: false };
-  renderQuiz('single', 'single-quiz', 'single-progress', 'single-submit', 'single-result');
-  renderQuiz('multiple', 'multiple-quiz', 'multiple-progress', 'multiple-submit', 'multiple-result');
-
-  showSection('home');
-}
-
-function logout() {
-  setCurrentUser(null);
-  document.getElementById('app').style.display = 'none';
-  document.getElementById('login-page').style.display = 'block';
-  document.getElementById('password').value = '';
-  document.getElementById('username').value = '';
-}
-
-document.getElementById('login-btn').addEventListener('click', tryLogin);
-document.getElementById('password').addEventListener('keypress', e => {
-  if (e.key === 'Enter') tryLogin();
-});
-document.getElementById('logout-btn').addEventListener('click', logout);
-
-// 清除数据
-document.getElementById('clear-data-btn').addEventListener('click', () => {
-  if (!confirm('确定要清除所有答题记录吗?此操作不可恢复!')) return;
-  const username = getCurrentUser();
-  const data = getStudentData(username);
-  data.answers = { single: {}, multiple: {} };
-  setStudentData(username, data);
-  alert('已清除所有答题记录');
-  renderOverview();
-  renderStats();
-  renderWrongBook();
+  const d = getStudentData(username);
+  d.answers = {}; d.history = [];
+  setStudentData(username, d);
+  switchTab('home');
 });
 
-// 启动:若已登录,直接进入应用
-if (getCurrentUser()) {
-  enterApp();
-}
+// =================== 启动 ===================
+syncRoster();
+if (getCurrentUser()) enterApp();
 </script>
-
 </body>
 </html>
